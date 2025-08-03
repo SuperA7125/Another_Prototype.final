@@ -285,6 +285,7 @@ MonoBehaviour:
   - {fileID: 0}
   isShadowOn: 0
   isPlayerNearby: 0
+  lightPlayer: {fileID: 0}
   interactText: {fileID: 0}
 --- !u!4 &205226158
 Transform:
@@ -402,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5325411352824234838, guid: c2b5841a7a24a5c4eadbb4f65400989f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7
+      value: -1.73
       objectReference: {fileID: 0}
     - target: {fileID: 5325411352824234838, guid: c2b5841a7a24a5c4eadbb4f65400989f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -656,6 +657,17 @@ PrefabInstance:
       addedObject: {fileID: 1781806117}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 826c8c0dd4a849745ba0f5c66925b0cf, type: 3}
+--- !u!114 &681830123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1046204071615033047, guid: 826c8c0dd4a849745ba0f5c66925b0cf, type: 3}
+  m_PrefabInstance: {fileID: 681830122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e12c08226998e418ce6b33b564de42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &733432342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4624649774374282013, guid: 826c8c0dd4a849745ba0f5c66925b0cf, type: 3}
@@ -1471,6 +1483,10 @@ PrefabInstance:
       value: Lantern
       objectReference: {fileID: 0}
     - target: {fileID: 3558221455100369570, guid: ac3567bf4ce92804896778a879ebc6ae, type: 3}
+      propertyPath: lightPlayer
+      value: 
+      objectReference: {fileID: 681830123}
+    - target: {fileID: 3558221455100369570, guid: ac3567bf4ce92804896778a879ebc6ae, type: 3}
       propertyPath: LightObjectWithShadows.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1997,7 +2013,7 @@ Transform:
   m_GameObject: {fileID: 4471714595513059129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0844, y: 0, z: 0.032679737}
+  m_LocalPosition: {x: 0.31, y: 0.07, z: 0.032679737}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2038,6 +2054,7 @@ MonoBehaviour:
   - {fileID: 0}
   isShadowOn: 0
   isPlayerNearby: 0
+  lightPlayer: {fileID: 0}
   interactText: {fileID: 0}
 --- !u!4 &3704770985712209822
 Transform:
