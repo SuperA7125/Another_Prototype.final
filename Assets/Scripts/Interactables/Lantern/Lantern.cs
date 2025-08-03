@@ -11,6 +11,9 @@ public class Lantern : MonoBehaviour
     public bool isShadowOn = false;
 
     public bool isPlayerNearby = false;
+
+    public Light lightPlayer;
+
     public TextMeshProUGUI interactText;
 
     void Start()
@@ -23,7 +26,7 @@ public class Lantern : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby)
+        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby && lightPlayer.enabled)
         {
             ToggleShadow();
         }
