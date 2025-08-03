@@ -64,7 +64,7 @@ public class Light : MonoBehaviour
         if (!shadowScript.enabled)
         {
             shadowScript.enabled = true;
-            this.enabled = true;
+            this.enabled = false;
         }
     }
 
