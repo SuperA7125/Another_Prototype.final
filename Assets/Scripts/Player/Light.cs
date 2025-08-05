@@ -11,9 +11,15 @@ public class Light : MonoBehaviour
 
     public Animator animator;
 
+    public Animator shadowAnimator;
+
     public PlayerState state;
 
     private SpriteRenderer spriteRenderer;
+
+    private SpriteRenderer shadowRenderer;
+
+    private float shadowOffsetX;
 
     public GameObject shadowObj;
 
@@ -31,6 +37,7 @@ public class Light : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         shadowScript = shadowObj.GetComponentInChildren<Shadow>();
+        shadowRenderer = shadowObj.GetComponent<SpriteRenderer>();
         shadowScript.enabled = false;
 
     }
@@ -57,6 +64,7 @@ public class Light : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
 
         animator.Play(state.ToString());
+        shadowAnimator.Play(state.ToString());
 
     }
 
@@ -88,7 +96,10 @@ public class Light : MonoBehaviour
 
     void SetShadowPos()
     {
-        shadowObj.transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, 0);
+        shadowOffsetX = spriteRenderer.flipX ? 0.15f : -0.15f;
+        shadowObj.transform.position = new Vector3(transform.position.x - shadowOffsetX, transform.position.y, 0);
+
+        shadowRenderer.flipX = spriteRenderer.flipX;
     }
 
     void GroundCheck()

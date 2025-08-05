@@ -1814,6 +1814,10 @@ PrefabInstance:
       propertyPath: rayLength
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 1046204071615033047, guid: 826c8c0dd4a849745ba0f5c66925b0cf, type: 3}
+      propertyPath: shadowAnimator
+      value: 
+      objectReference: {fileID: 1825313836}
     - target: {fileID: 1241728120122042378, guid: 826c8c0dd4a849745ba0f5c66925b0cf, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -2017,6 +2021,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3168455117953326091, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: isLeverOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3168455117953326091, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
