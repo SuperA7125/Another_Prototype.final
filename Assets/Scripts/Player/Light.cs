@@ -96,7 +96,7 @@ public class Light : MonoBehaviour
 
     void SetShadowPos()
     {
-        shadowOffsetX = spriteRenderer.flipX ? 0.15f : -0.15f;
+        shadowOffsetX = spriteRenderer.flipX ? 0.2f : -0.2f;
         shadowObj.transform.position = new Vector3(transform.position.x - shadowOffsetX, transform.position.y, 0);
 
         shadowRenderer.flipX = spriteRenderer.flipX;
