@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Shadow : MonoBehaviour
@@ -7,6 +8,13 @@ public class Shadow : MonoBehaviour
     public float jumpForce = 1f;   
 
     bool hasJumped = false;
+
+    public Animator animator;
+
+    public PlayerState state;
+
+    private SpriteRenderer spriteRenderer;
+
     public GameObject lightObj;
 
     Light lightScript;
@@ -20,6 +28,8 @@ public class Shadow : MonoBehaviour
     private float horizontal;
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         lightScript = lightObj.GetComponentInChildren<Light>();
         
     }
@@ -44,16 +54,25 @@ public class Shadow : MonoBehaviour
         }
         horizontal = Input.GetAxis("Horizontal");
 
-        
+        animator.Play(state.ToString());
     }
 
     private void FixedUpdate()
     {
-        if (horizontal != 0)
-        {
-            transform.position += Vector3.right * (horizontal * speed * Time.deltaTime);
+        
+        
+            if (horizontal != 0)
+            {
+                state = PlayerState.Walk;
+                transform.position += Vector3.right * (horizontal * speed * Time.deltaTime);
 
-        }
+                spriteRenderer.flipX = horizontal > 0;
+            }
+            else
+            {
+                state = PlayerState.Idle;
+            }
+        
     }
     void ToggleMode()
     {
@@ -72,10 +91,22 @@ public class Shadow : MonoBehaviour
 
         /*Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.green);
         Debug.Log(hit.ToString());*/
+        //Debug.Log(hit.collider);
         if (hit.collider != null)
         {
             hasJumped = false;
             return;
         }
+        else
+        {
+            hasJumped = true;
+            state = PlayerState.Jump;
+        }
+    }
+
+    private IEnumerator WaitAfterJump(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        hasJumped = false;
     }
 }

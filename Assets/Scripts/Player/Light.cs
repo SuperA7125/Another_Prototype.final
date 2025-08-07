@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 public class Light : MonoBehaviour
@@ -7,6 +8,18 @@ public class Light : MonoBehaviour
     public float jumpForce = 1f;
 
     public bool hasJumped = false;
+
+    public Animator animator;
+
+    public Animator shadowAnimator;
+
+    public PlayerState state;
+
+    private SpriteRenderer spriteRenderer;
+
+    private SpriteRenderer shadowRenderer;
+
+    private float shadowOffsetX;
 
     public GameObject shadowObj;
 
@@ -21,9 +34,12 @@ public class Light : MonoBehaviour
     private float horizontal;
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         shadowScript = shadowObj.GetComponentInChildren<Shadow>();
+        shadowRenderer = shadowObj.GetComponent<SpriteRenderer>();
         shadowScript.enabled = false;
-        
+
     }
 
 
@@ -42,22 +58,32 @@ public class Light : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !hasJumped)
         {
             hasJumped = true;
-            lightRb.AddForce(Vector3.up * jumpForce , ForceMode2D.Impulse);
+            lightRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
         }
 
         horizontal = Input.GetAxis("Horizontal");
 
+        animator.Play(state.ToString());
+        shadowAnimator.Play(state.ToString());
 
     }
 
     private void FixedUpdate()
     {
         
-        if (horizontal != 0)
-        {
-            transform.position += Vector3.right * (horizontal * speed * Time.deltaTime);
+        
+            if (horizontal != 0)
+            {
+                state = PlayerState.Walk;
+                transform.position += Vector3.right * (horizontal * speed * Time.deltaTime);
 
-        }
+                spriteRenderer.flipX = horizontal > 0;
+            }
+            else
+            {
+                state = PlayerState.Idle;
+            }
+        
     }
     void ToggleMode()
     {
@@ -70,20 +96,35 @@ public class Light : MonoBehaviour
 
     void SetShadowPos()
     {
-        shadowObj.transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y,-1);
+        shadowOffsetX = spriteRenderer.flipX ? 0.2f : -0.2f;
+        shadowObj.transform.position = new Vector3(transform.position.x - shadowOffsetX, transform.position.y, 0);
+
+        shadowRenderer.flipX = spriteRenderer.flipX;
     }
 
     void GroundCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLength, lightGround);
 
-        /*Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.green);
+        /*Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.green,14444f);
         Debug.Log(hit.ToString());*/
         //Debug.Log(hit.collider);
-        if (hit.collider != null )
+        if (hit.collider != null)
         {
             hasJumped = false;
             return;
         }
+        else
+        {
+            hasJumped = true;   
+            state = PlayerState.Jump;
+        }
     }
+
+    private IEnumerator WaitAfterJump(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        hasJumped = false;
+    }
+        
 }
