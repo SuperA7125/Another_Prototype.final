@@ -49,7 +49,8 @@ public class Light : MonoBehaviour
 
         SetShadowPos();
 
-        if (Input.GetKeyDown(KeyCode.G))
+        
+            if (Input.GetKeyDown(KeyCode.G))
         {
             Debug.Log("Key Down!");
             ToggleMode();
@@ -119,12 +120,6 @@ public class Light : MonoBehaviour
             hasJumped = true;   
             state = PlayerState.Jump;
         }
-    }
-
-    private IEnumerator WaitAfterJump(float sec)
-    {
-        yield return new WaitForSeconds(sec);
-        hasJumped = false;
-    }
+    } 
         
 }

@@ -74,7 +74,7 @@ public class Shadow : MonoBehaviour
             }
         
     }
-    void ToggleMode()
+    public void ToggleMode()
     {
         if (!lightScript.enabled)
         {

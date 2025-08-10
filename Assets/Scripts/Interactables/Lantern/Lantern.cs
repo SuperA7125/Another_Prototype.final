@@ -18,9 +18,9 @@ public class Lantern : MonoBehaviour
 
     void Start()
     {
-        interactText.transform.position = transform.position + new Vector3(0, 1.2f, 0);
+        /*interactText.transform.position = transform.position + new Vector3(0, 1.2f, 0);
         interactText.transform.localScale = Vector3.one * 0.03f;
-        interactText.text = "";
+        interactText.text = "";*/
     }
 
 
@@ -37,7 +37,10 @@ public class Lantern : MonoBehaviour
         if (other.CompareTag("Player"))
         { 
             isPlayerNearby = true;
-            interactText.text = "Press E"; 
+            if (interactText != null) 
+            { 
+                interactText.text = "Press E"; 
+            }
         }
     }
 
@@ -46,7 +49,10 @@ public class Lantern : MonoBehaviour
         if (other.CompareTag("Player"))
         { 
             isPlayerNearby = false;
-            interactText.text = "";
+            if (interactText != null)
+            {
+                interactText.text = "";
+            }
         }
     }
 
