@@ -42,7 +42,10 @@ public class Light : MonoBehaviour
 
     }
 
-
+    private void OnEnable()
+    {
+        SetShadowOnEnable();
+    }
     void Update()
     {
         GroundCheck();
@@ -65,8 +68,10 @@ public class Light : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
 
         animator.Play(state.ToString());
-        shadowAnimator.Play(state.ToString());
-
+        if (!IsShadowAnimationRunning("Appear"))
+        {
+            shadowAnimator.Play(state.ToString());
+        }
     }
 
     private void FixedUpdate()
@@ -90,6 +95,8 @@ public class Light : MonoBehaviour
     {
         if (!shadowScript.enabled)
         {
+            state = PlayerState.Idle;
+            animator.Play(state.ToString());
             shadowScript.enabled = true;
             this.enabled = false;
         }
@@ -101,8 +108,18 @@ public class Light : MonoBehaviour
         shadowObj.transform.position = new Vector3(transform.position.x - shadowOffsetX, transform.position.y, 0);
 
         shadowRenderer.flipX = spriteRenderer.flipX;
+        
     }
 
+    void SetShadowOnEnable()
+    {
+
+        shadowOffsetX = spriteRenderer.flipX ? 0.2f : -0.2f;
+        shadowObj.transform.position = new Vector3(transform.position.x - shadowOffsetX, transform.position.y, 0);
+
+        shadowRenderer.flipX = spriteRenderer.flipX;
+        shadowAnimator.Play("Appear");
+    }
     void GroundCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLength, lightGround);
@@ -120,6 +137,18 @@ public class Light : MonoBehaviour
             hasJumped = true;   
             state = PlayerState.Jump;
         }
-    } 
-        
+    }
+
+    bool IsShadowAnimationRunning(string animationName)
+    {
+        AnimatorStateInfo currentStateInfo = shadowAnimator.GetCurrentAnimatorStateInfo(0);
+        if (currentStateInfo.IsName(animationName))
+        {
+            if (currentStateInfo.normalizedTime < 0.95f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

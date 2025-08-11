@@ -26,35 +26,48 @@ public class Shadow : MonoBehaviour
     public float rayLength;
 
     private float horizontal;
+
+    
     void Start()
     {
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         lightScript = lightObj.GetComponentInChildren<Light>();
         
     }
 
+    private void OnEnable()
+    {
+        ResetGravity();
+    }
 
     void Update()
     {
-        GroundCheck();
-
-        Debug.DrawRay(transform.position, Vector2.down * 1f, Color.green);
-
-        if (Input.GetKeyDown(KeyCode.G))
+        if (!IsAnimationRunning("Disappear"))
         {
-            Debug.Log("Key Down!");
-            ToggleMode();
+            GroundCheck();
+
+            Debug.DrawRay(transform.position, Vector2.down * 1f, Color.green);
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                Debug.Log("Key Down!");
+                ToggleMode();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && !hasJumped)
+            {
+                hasJumped = true;
+                shadowRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            }
+            horizontal = Input.GetAxis("Horizontal");
+
+
+            animator.Play(state.ToString());
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !hasJumped)
-        {
-            hasJumped = true;
-            shadowRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-        }
-        horizontal = Input.GetAxis("Horizontal");
-
-        animator.Play(state.ToString());
+        Debug.Log(state.ToString());
     }
 
     private void FixedUpdate()
@@ -70,19 +83,14 @@ public class Shadow : MonoBehaviour
             }
             else
             {
-                state = PlayerState.Idle;
+                    state = PlayerState.Idle; 
             }
         
     }
     public void ToggleMode()
     {
         if (!lightScript.enabled)
-        {
-            this.transform.position = new Vector3(lightObj.transform.position.x -0.2f , lightObj.transform.position.y );
-
-            lightScript.enabled = true;
-            this.enabled = false;
-        }
+            StartCoroutine(SwitchToLightAfterAnimation());
     }
 
     void GroundCheck()
@@ -101,12 +109,43 @@ public class Shadow : MonoBehaviour
         {
             hasJumped = true;
             state = PlayerState.Jump;
+            
         }
     }
+    
 
-    private IEnumerator WaitAfterJump(float sec)
+    bool IsAnimationRunning(string animationName)
     {
-        yield return new WaitForSeconds(sec);
-        hasJumped = false;
+        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentStateInfo.IsName(animationName))
+        {
+            if (currentStateInfo.normalizedTime < 0.95f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    IEnumerator SwitchToLightAfterAnimation()
+    {
+        ResetGravity();
+
+        state = PlayerState.Disappear;
+        animator.Play(state.ToString());
+        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(currentStateInfo.length - 0.1f);
+
+        transform.position = lightObj.transform.position + new Vector3(-0.2f, 0, 0);
+        lightScript.enabled = true;
+        this.enabled = false;
+    }
+
+    
+        void ResetGravity()
+    {
+        shadowRb.gravityScale = 1;
+        shadowRb.linearVelocity = Vector2.zero;
+        shadowRb.angularVelocity = 0;
     }
 }
