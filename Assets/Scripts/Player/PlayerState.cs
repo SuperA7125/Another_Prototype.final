@@ -4,5 +4,8 @@ public enum PlayerState
 {
     Idle,
     Walk,
-    Jump
+    Jump,
+    Disappear,
+    Appear
+
 }
