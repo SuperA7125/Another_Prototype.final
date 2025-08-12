@@ -9,6 +9,7 @@ public class Light : MonoBehaviour
 
     public bool hasJumped = false;
 
+    bool isDead = false;
     public Animator animator;
 
     public Animator shadowAnimator;
@@ -23,7 +24,11 @@ public class Light : MonoBehaviour
 
     public GameObject shadowObj;
 
+    public GameObject lightObj;
+
     Shadow shadowScript;
+
+    public bool shadowNeedsActivition = true;
 
     public Rigidbody2D lightRb;
 
@@ -42,42 +47,48 @@ public class Light : MonoBehaviour
 
     }
 
-    private void OnEnable()
-    {
-        SetShadowOnEnable();
-    }
     void Update()
     {
+
+        if (!shadowNeedsActivition)
+        {
+            StartCoroutine(WaitForShadowToAppear());
+        }
         GroundCheck();
 
         SetShadowPos();
 
         
-            if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             Debug.Log("Key Down!");
             ToggleMode();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && !hasJumped)
+        if (!IsAnimationRunning("Disappear"))
         {
-            hasJumped = true;
-            lightRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            if (Input.GetKeyDown(KeyCode.Space) && !hasJumped)
+            {
+                hasJumped = true;
+                lightRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            }
         }
-
         horizontal = Input.GetAxis("Horizontal");
 
-        animator.Play(state.ToString());
-        if (!IsShadowAnimationRunning("Appear"))
+        if (!IsAnimationRunning("Disappear") && !isDead) 
         {
-            shadowAnimator.Play(state.ToString());
+            animator.Play(state.ToString());
+            if (!IsShadowAnimationRunning("Appear"))
+            {
+                shadowAnimator.Play(state.ToString());
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        
-        
+
+        if (!IsAnimationRunning("Disappear"))
+        {
             if (horizontal != 0)
             {
                 state = PlayerState.Walk;
@@ -89,7 +100,7 @@ public class Light : MonoBehaviour
             {
                 state = PlayerState.Idle;
             }
-        
+        }
     }
     void ToggleMode()
     {
@@ -97,11 +108,16 @@ public class Light : MonoBehaviour
         {
             state = PlayerState.Idle;
             animator.Play(state.ToString());
+            shadowNeedsActivition = false;
             shadowScript.enabled = true;
             this.enabled = false;
         }
     }
 
+    public void StartDeathAndRespawn()
+    {
+        StartCoroutine(DeathAndRespawn());
+    }
     void SetShadowPos()
     {
         shadowOffsetX = spriteRenderer.flipX ? 0.2f : -0.2f;
@@ -111,15 +127,7 @@ public class Light : MonoBehaviour
         
     }
 
-    void SetShadowOnEnable()
-    {
-
-        shadowOffsetX = spriteRenderer.flipX ? 0.2f : -0.2f;
-        shadowObj.transform.position = new Vector3(transform.position.x - shadowOffsetX, transform.position.y, 0);
-
-        shadowRenderer.flipX = spriteRenderer.flipX;
-        shadowAnimator.Play("Appear");
-    }
+    
     void GroundCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLength, lightGround);
@@ -150,5 +158,46 @@ public class Light : MonoBehaviour
             }
         }
         return false;
+    }
+
+    bool IsAnimationRunning(string animationName)
+    {
+        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (currentStateInfo.IsName(animationName))
+        {
+            if (currentStateInfo.normalizedTime < 0.95f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    IEnumerator WaitForShadowToAppear()
+    {
+        shadowOffsetX = spriteRenderer.flipX ? 0.2f : -0.2f;
+        shadowObj.transform.position = new Vector3(transform.position.x - shadowOffsetX, transform.position.y, 0);
+
+        shadowRenderer.flipX = spriteRenderer.flipX;
+        shadowAnimator.Play("Appear");
+        AnimatorStateInfo currentStateInfo = shadowAnimator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(currentStateInfo.length -0.1f);
+        shadowNeedsActivition = true;
+    }
+
+    IEnumerator DeathAndRespawn()
+    {
+        isDead = true;
+        animator.Play("Disappear");
+        shadowAnimator.Play("Disappear");
+        
+        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(currentStateInfo.length - 0.1f);
+
+        GameManager.Instance.RespawnPlayer(lightObj);
+
+        yield return new WaitForSeconds(0.06f);
+
+        isDead = false;
     }
 }
