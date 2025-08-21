@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 47729695}
   - component: {fileID: 47729694}
   - component: {fileID: 47729693}
-  - component: {fileID: 47729692}
+  - component: {fileID: 47729696}
   m_Layer: 0
   m_Name: Spike (3)
   m_TagString: Untagged
@@ -264,18 +264,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &47729692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47729691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &47729693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -392,6 +380,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968047511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &47729696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47729691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1544165567eaf47909625c51b2f73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &78968435
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 78968439}
   - component: {fileID: 78968438}
   - component: {fileID: 78968437}
-  - component: {fileID: 78968436}
+  - component: {fileID: 78968440}
   m_Layer: 0
   m_Name: Spike (5)
   m_TagString: Untagged
@@ -411,18 +411,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &78968436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78968435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &78968437
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -539,6 +527,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968047511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &78968440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78968435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1544165567eaf47909625c51b2f73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &118758988
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +550,6 @@ GameObject:
   - component: {fileID: 118758992}
   - component: {fileID: 118758991}
   - component: {fileID: 118758990}
-  - component: {fileID: 118758989}
   m_Layer: 0
   m_Name: Spike (7)
   m_TagString: Untagged
@@ -558,18 +557,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &118758989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118758988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &118758990
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -708,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.264786
+      value: 7.65
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.z
@@ -843,7 +830,6 @@ GameObject:
   - component: {fileID: 214178502}
   - component: {fileID: 214178501}
   - component: {fileID: 214178500}
-  - component: {fileID: 214178499}
   m_Layer: 0
   m_Name: Spike (16)
   m_TagString: Untagged
@@ -851,18 +837,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &214178499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214178498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &214178500
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1066,7 +1040,6 @@ GameObject:
   - component: {fileID: 285314254}
   - component: {fileID: 285314253}
   - component: {fileID: 285314252}
-  - component: {fileID: 285314251}
   m_Layer: 0
   m_Name: Spike (10)
   m_TagString: Untagged
@@ -1074,18 +1047,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &285314251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285314250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &285314252
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1213,7 +1174,6 @@ GameObject:
   - component: {fileID: 299833771}
   - component: {fileID: 299833770}
   - component: {fileID: 299833769}
-  - component: {fileID: 299833768}
   m_Layer: 0
   m_Name: Spike (11)
   m_TagString: Untagged
@@ -1221,18 +1181,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &299833768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299833767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &299833769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1429,7 +1377,6 @@ GameObject:
   - component: {fileID: 336399414}
   - component: {fileID: 336399413}
   - component: {fileID: 336399412}
-  - component: {fileID: 336399411}
   m_Layer: 0
   m_Name: Spike (9)
   m_TagString: Untagged
@@ -1437,18 +1384,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &336399411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336399410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &336399412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1576,7 +1511,6 @@ GameObject:
   - component: {fileID: 357736851}
   - component: {fileID: 357736850}
   - component: {fileID: 357736849}
-  - component: {fileID: 357736848}
   m_Layer: 0
   m_Name: Spike (12)
   m_TagString: Untagged
@@ -1584,18 +1518,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &357736848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357736847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &357736849
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2211,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3704770986366780981, guid: ac3567bf4ce92804896778a879ebc6ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5992594
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: 3704770986366780981, guid: ac3567bf4ce92804896778a879ebc6ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2592,7 +2514,6 @@ GameObject:
   - component: {fileID: 658535903}
   - component: {fileID: 658535902}
   - component: {fileID: 658535901}
-  - component: {fileID: 658535900}
   m_Layer: 0
   m_Name: Spike (14)
   m_TagString: Untagged
@@ -2600,18 +2521,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &658535900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658535899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &658535901
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2785,32 +2694,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab45cd88b7e747469fde08eb4afed56, type: 3}
---- !u!1 &667644057 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9132119444767521416, guid: f42967a07cf65c540ad984785bd90715, type: 3}
-  m_PrefabInstance: {fileID: 1378868904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &667644063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3043730847756313761, guid: f42967a07cf65c540ad984785bd90715, type: 3}
   m_PrefabInstance: {fileID: 1378868904}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667644057}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39e12c08226998e418ce6b33b564de42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &667644064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667644057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b082201ada0429546a7320e8a3edcdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &671315457
@@ -2862,7 +2754,6 @@ GameObject:
   - component: {fileID: 680413232}
   - component: {fileID: 680413231}
   - component: {fileID: 680413230}
-  - component: {fileID: 680413229}
   m_Layer: 0
   m_Name: Spike (15)
   m_TagString: Untagged
@@ -2870,18 +2761,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &680413229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680413228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &680413230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3265,7 +3144,7 @@ GameObject:
   - component: {fileID: 735005191}
   - component: {fileID: 735005190}
   - component: {fileID: 735005189}
-  - component: {fileID: 735005188}
+  - component: {fileID: 735005192}
   m_Layer: 0
   m_Name: Spike (2)
   m_TagString: Untagged
@@ -3273,18 +3152,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &735005188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735005187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &735005189
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3401,6 +3268,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968047511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735005192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735005187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1544165567eaf47909625c51b2f73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &765770788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,7 +3705,6 @@ GameObject:
   - component: {fileID: 880979105}
   - component: {fileID: 880979104}
   - component: {fileID: 880979103}
-  - component: {fileID: 880979102}
   m_Layer: 0
   m_Name: Spike (8)
   m_TagString: Untagged
@@ -3834,18 +3712,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &880979102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880979101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &880979103
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4112,7 +3978,6 @@ GameObject:
   - component: {fileID: 944557890}
   - component: {fileID: 944557893}
   - component: {fileID: 944557892}
-  - component: {fileID: 944557891}
   m_Layer: 0
   m_Name: Spike (13)
   m_TagString: Untagged
@@ -4135,18 +4000,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 952790537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &944557891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944557889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &944557892
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4447,7 +4300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5847931
+      value: -1.22
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4888,7 +4741,7 @@ GameObject:
   - component: {fileID: 1202037241}
   - component: {fileID: 1202037240}
   - component: {fileID: 1202037239}
-  - component: {fileID: 1202037238}
+  - component: {fileID: 1202037242}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -4896,18 +4749,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1202037238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202037237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1202037239
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5024,6 +4865,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968047511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1202037242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202037237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1544165567eaf47909625c51b2f73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1222576929
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,7 +4888,7 @@ GameObject:
   - component: {fileID: 1222576933}
   - component: {fileID: 1222576932}
   - component: {fileID: 1222576931}
-  - component: {fileID: 1222576930}
+  - component: {fileID: 1222576934}
   m_Layer: 0
   m_Name: FirstCheckPoint
   m_TagString: Untagged
@@ -5043,20 +4896,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1222576930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222576929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a59a233dfd2e4489fe420f88e027f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnAnchor: {fileID: 0}
-  offset: {x: 0, y: 0.5}
 --- !u!212 &1222576931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5173,6 +5012,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2131373567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222576934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222576929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b92da24bdf84a4ab3180a332e69a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1247270438
 GameObject:
   m_ObjectHideFlags: 0
@@ -5184,7 +5035,6 @@ GameObject:
   - component: {fileID: 1247270439}
   - component: {fileID: 1247270442}
   - component: {fileID: 1247270441}
-  - component: {fileID: 1247270440}
   m_Layer: 0
   m_Name: Spike (12)
   m_TagString: Untagged
@@ -5207,18 +5057,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 952790537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1247270440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247270438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1247270441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5449,6 +5287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Player '
       objectReference: {fileID: 0}
+    - target: {fileID: 3043730847756313761, guid: f42967a07cf65c540ad984785bd90715, type: 3}
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5960305452622724596, guid: f42967a07cf65c540ad984785bd90715, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.357
@@ -5489,13 +5331,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6598982107029918884, guid: f42967a07cf65c540ad984785bd90715, type: 3}
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9132119444767521416, guid: f42967a07cf65c540ad984785bd90715, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 667644064}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f42967a07cf65c540ad984785bd90715, type: 3}
 --- !u!1 &1393681612
 GameObject:
@@ -5642,7 +5485,7 @@ GameObject:
   - component: {fileID: 1402270025}
   - component: {fileID: 1402270024}
   - component: {fileID: 1402270023}
-  - component: {fileID: 1402270022}
+  - component: {fileID: 1402270026}
   m_Layer: 0
   m_Name: Spike (4)
   m_TagString: Untagged
@@ -5650,18 +5493,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1402270022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402270021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1402270023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5778,6 +5609,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968047511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402270026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402270021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1544165567eaf47909625c51b2f73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1440023077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7704906039314541482, guid: 0ab45cd88b7e747469fde08eb4afed56, type: 3}
@@ -5852,6 +5695,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2b5841a7a24a5c4eadbb4f65400989f, type: 3}
+--- !u!1 &1469935182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469935184}
+  - component: {fileID: 1469935183}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1469935183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469935182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51944ec779901b44c807d95100f5f8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1469935184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469935182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.089270085, y: -15.984711, z: -0.09239702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1480499727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7704906039314541482, guid: 0ab45cd88b7e747469fde08eb4afed56, type: 3}
@@ -6586,7 +6473,7 @@ GameObject:
   - component: {fileID: 1759031424}
   - component: {fileID: 1759031423}
   - component: {fileID: 1759031422}
-  - component: {fileID: 1759031421}
+  - component: {fileID: 1759031425}
   m_Layer: 0
   m_Name: SecondCheckPoint
   m_TagString: Untagged
@@ -6594,20 +6481,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1759031421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759031420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a59a233dfd2e4489fe420f88e027f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnAnchor: {fileID: 0}
-  offset: {x: 0, y: 0.5}
 --- !u!212 &1759031422
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6724,6 +6597,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2131373567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1759031425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759031420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b92da24bdf84a4ab3180a332e69a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760050684
 GameObject:
   m_ObjectHideFlags: 0
@@ -7049,7 +6934,6 @@ GameObject:
   - component: {fileID: 1829892249}
   - component: {fileID: 1829892252}
   - component: {fileID: 1829892251}
-  - component: {fileID: 1829892250}
   m_Layer: 0
   m_Name: Spike (10)
   m_TagString: Untagged
@@ -7072,18 +6956,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 952790537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1829892250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829892248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1829892251
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7207,7 +7079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.450162
+      value: -13.92
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7556,7 +7428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.5133085
+      value: -7.89
       objectReference: {fileID: 0}
     - target: {fileID: 6728828078225284919, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7781,7 +7653,6 @@ GameObject:
   - component: {fileID: 1971948586}
   - component: {fileID: 1971948585}
   - component: {fileID: 1971948584}
-  - component: {fileID: 1971948583}
   m_Layer: 0
   m_Name: Spike (13)
   m_TagString: Untagged
@@ -7789,18 +7660,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1971948583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971948582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1971948584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7933,7 +7792,6 @@ GameObject:
   - component: {fileID: 1986781028}
   - component: {fileID: 1986781027}
   - component: {fileID: 1986781026}
-  - component: {fileID: 1986781025}
   m_Layer: 0
   m_Name: Spike (6)
   m_TagString: Untagged
@@ -7941,18 +7799,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1986781025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986781024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1986781026
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8080,7 +7926,7 @@ GameObject:
   - component: {fileID: 2006137385}
   - component: {fileID: 2006137384}
   - component: {fileID: 2006137383}
-  - component: {fileID: 2006137382}
+  - component: {fileID: 2006137386}
   m_Layer: 0
   m_Name: Spike (1)
   m_TagString: Untagged
@@ -8088,18 +7934,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2006137382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006137381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2006137383
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8216,6 +8050,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968047511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2006137386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006137381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1544165567eaf47909625c51b2f73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2016215394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8819,7 +8665,6 @@ GameObject:
   - component: {fileID: 2140602358}
   - component: {fileID: 2140602361}
   - component: {fileID: 2140602360}
-  - component: {fileID: 2140602359}
   m_Layer: 0
   m_Name: Spike (11)
   m_TagString: Untagged
@@ -8842,18 +8687,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 952790537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2140602359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140602357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca882864cce9334c8b5a435eafad2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2140602360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9152,3 +8985,4 @@ SceneRoots:
   - {fileID: 1823353509}
   - {fileID: 2131373567}
   - {fileID: 1662915571}
+  - {fileID: 1469935184}
