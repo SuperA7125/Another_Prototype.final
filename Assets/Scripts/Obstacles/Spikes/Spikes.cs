@@ -3,6 +3,8 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
     private Shadow shadow;
+
+    private Light light;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +21,13 @@ public class Spikes : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.RespawnPlayer(other.gameObject);
+            light = other.GetComponent<Light>();
+            
+            if (light != null)
+            {
+                Debug.Log("light Found");
+                light.StartDeathAndRespawn();
+            }
         }
         else if (other.CompareTag("PlayerShadow"))
         {
