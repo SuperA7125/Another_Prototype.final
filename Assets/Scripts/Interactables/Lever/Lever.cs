@@ -17,7 +17,7 @@ public class Lever : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -49,21 +49,21 @@ public class Lever : MonoBehaviour
     {
         if (isLeverOn)
         {
-            animator.SetBool("IsLeverActive",true);
+            animator.Play("LeverOff");
             foreach (GameObject obj in LightObjectToToggle)
             {
                 obj.SetActive(false);
-                isLeverOn = false;
             }
+            isLeverOn = false;
         }
         else
         {
-            animator.SetBool("IsLeverActive", false);
+            animator.Play("LeverOn");
             foreach (GameObject obj in LightObjectToToggle)
             {
                 obj.SetActive(true);
-                isLeverOn = true;
-            } 
+            }
+            isLeverOn = true;
         }    
     }
 }

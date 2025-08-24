@@ -16,8 +16,10 @@ public class Lantern : MonoBehaviour
 
     public TextMeshProUGUI interactText;
 
+    Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
         /*interactText.transform.position = transform.position + new Vector3(0, 1.2f, 0);
         interactText.transform.localScale = Vector3.one * 0.03f;
         interactText.text = "";*/
@@ -60,24 +62,28 @@ public class Lantern : MonoBehaviour
     {
         if (isShadowOn)
         {
+            animator.Play("Off");
             foreach (GameObject obj in LightObjectWithShadows)
             {
                 foreach (Transform child in obj.transform)
                 {
                     isShadowOn = false;
                     child.gameObject.SetActive(false);
+                    
                 }
             }
 
         }
         else if (!isShadowOn)
         {
+            animator.Play("On");
             foreach (GameObject obj in LightObjectWithShadows)
             {
                 foreach (Transform child in obj.transform)
                 {
                     isShadowOn = true;
                     child.gameObject.SetActive(true);
+                    
                 }
             }
         }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Button : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Button : MonoBehaviour
         foreach (ShadowDoors door in ShadowDoors)
         {
             door.startingPos = door.shadowDoor.transform.position;
-            door.hight = door.shadowDoor.GetComponent<SpriteRenderer>().bounds.size.y;
+            door.SetHight();
         }
     }
 
@@ -95,7 +96,19 @@ public class ShadowDoors
 
     public Vector3 startingPos;
 
+    public int numberOfTiles;
+
     public float hight;
 
-    public float speed = 5f;
+    public float speed = 1f;
+
+    public void SetHight()
+    {
+        Tilemap tilemap =  shadowDoor.GetComponent<Tilemap>();
+        if (tilemap != null)
+        {
+            float tileHeight = tilemap.layoutGrid.cellSize.y;
+            hight = tileHeight * numberOfTiles;
+        }
+    }
 }

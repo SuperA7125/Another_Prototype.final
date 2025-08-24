@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class LightCheckpoint : MonoBehaviour
 {
+    Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class LightCheckpoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.Instance.SetLastCheckpoint(transform.position);
+            animator.Play("On");
             Debug.Log("Checkpoint made!");
         }
     }
