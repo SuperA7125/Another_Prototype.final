@@ -39,11 +39,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BrickWalls
+    uniqueID: 1414609281
+    locked: 0
+  - name: ShadowGround
+    uniqueID: 1244752147
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Shadow
     uniqueID: 2725236043
+    locked: 0
+  - name: Ground
+    uniqueID: 1064092687
     locked: 0
   - name: Light
     uniqueID: 4211936309

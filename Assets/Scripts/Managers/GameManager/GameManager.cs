@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         if (lastCheckpointPos != Vector2.zero)
         {
-            player.transform.position = lastCheckpointPos;
+            player.transform.position = new Vector3(lastCheckpointPos.x, lastCheckpointPos.y + 3f,0);
         }
     }
 }
