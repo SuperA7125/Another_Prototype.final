@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     private Vector3 targetPos;
     public float followSpeed = 5f;
 
+    private Transform overrideTarget = null;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,15 +24,22 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckActivePlayer();
-
-        if (isFollowingLight)
+        if (overrideTarget != null)
         {
-            FollowToLight();
+            FollowToTarget();
         }
         else
         {
-            FollowToShadow();
+            CheckActivePlayer();
+
+            if (isFollowingLight)
+            {
+                FollowToLight();
+            }
+            else
+            {
+                FollowToShadow();
+            }
         }
     }
 
@@ -51,6 +60,23 @@ public class CameraController : MonoBehaviour
         cameraObj.transform.position = Vector3.MoveTowards(cameraObj.transform.position, targetPos, followSpeed * Time.deltaTime);
     }
 
+    void FollowToTarget()
+    {
+        targetPos = overrideTarget.transform.position;
+        targetPos.z = cameraObj.transform.position.z;
+
+        cameraObj.transform.position = Vector3.MoveTowards(cameraObj.transform.position, targetPos, followSpeed * Time.deltaTime);
+    }
+
+    public void SetOverride(Transform transform) 
+    { 
+        overrideTarget = transform; 
+    }
+
+    public void ClearOverride()
+    {
+        overrideTarget = null;
+    }
     void CheckActivePlayer()
     {
         if (lightPlayer.GetComponent<Light>().enabled == false)

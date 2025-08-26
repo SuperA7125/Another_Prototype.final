@@ -52,11 +52,11 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   hasJumped: 0
-  animator: {fileID: 0}
+  animator: {fileID: 3683919808171208501}
   shadowAnimator: {fileID: 3554213499845685282}
   state: 0
   shadowObj: {fileID: 3392218581986733728}
-  lightObj: {fileID: 0}
+  lightObj: {fileID: 103042364053117000}
   shadowNeedsActivition: 1
   lightRb: {fileID: 4735883470252918524}
   lightGround:
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 5
-  animator: {fileID: 0}
+  animator: {fileID: 3554213499845685282}
   state: 0
   lightObj: {fileID: 103042364053117000}
   shadowRb: {fileID: 342876139677818871}
