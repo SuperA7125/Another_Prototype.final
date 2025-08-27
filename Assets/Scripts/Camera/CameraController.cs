@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     public GameObject lightPlayer;
     public GameObject shadowPlayer;
 
+    public float yOffset = 1f;
     private Vector3 targetPos;
     public float followSpeed = 5f;
 
@@ -45,7 +46,7 @@ public class CameraController : MonoBehaviour
 
     void FollowToLight()
     {
-       targetPos = lightPlayer.transform.position;
+       targetPos = lightPlayer.transform.position + new Vector3(0, yOffset, 0);
        targetPos.z = cameraObj.transform.position.z;
 
        cameraObj.transform.position = Vector3.MoveTowards(cameraObj.transform.position, targetPos, followSpeed * Time.deltaTime);
@@ -54,7 +55,7 @@ public class CameraController : MonoBehaviour
 
     void FollowToShadow()
     {
-        targetPos = shadowPlayer.transform.position;
+        targetPos = shadowPlayer.transform.position + new Vector3(0, yOffset, 0);
         targetPos.z = cameraObj.transform.position.z;
 
         cameraObj.transform.position = Vector3.MoveTowards(cameraObj.transform.position, targetPos, followSpeed * Time.deltaTime);

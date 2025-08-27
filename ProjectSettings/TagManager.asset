@@ -42,6 +42,9 @@ TagManager:
   - name: BrickWalls
     uniqueID: 1414609281
     locked: 0
+  - name: Beacon
+    uniqueID: 3820302365
+    locked: 0
   - name: ShadowGround
     uniqueID: 1244752147
     locked: 0
