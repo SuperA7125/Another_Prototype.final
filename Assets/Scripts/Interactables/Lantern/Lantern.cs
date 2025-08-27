@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class Lantern : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Lantern : MonoBehaviour
     public bool isPlayerNearby = false;
 
     public Light lightPlayer;
+
+    public Light2D light2D;
 
     public TextMeshProUGUI interactText;
 
@@ -63,10 +66,12 @@ public class Lantern : MonoBehaviour
         if (isShadowOn)
         {
             animator.Play("Off");
+            light2D.enabled = false;
             foreach (GameObject obj in LightObjectWithShadows)
             {
                 foreach (Transform child in obj.transform)
                 {
+                    
                     isShadowOn = false;
                     child.gameObject.SetActive(false);
                     
@@ -77,6 +82,7 @@ public class Lantern : MonoBehaviour
         else if (!isShadowOn)
         {
             animator.Play("On");
+            light2D.enabled = true;
             foreach (GameObject obj in LightObjectWithShadows)
             {
                 foreach (Transform child in obj.transform)

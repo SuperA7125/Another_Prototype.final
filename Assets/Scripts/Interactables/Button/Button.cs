@@ -14,19 +14,21 @@ public class Button : MonoBehaviour
 
     void Start()
     {
-        foreach (ShadowDoors door in ShadowDoors)
-        {
-            door.startingPos = door.shadowDoor.transform.position;
-            door.SetHight();
-        }
+            foreach (ShadowDoors door in ShadowDoors)
+            {
+                door.startingPos = door.shadowDoor.transform.position;
+                door.SetHight();
+            }
     }
 
     
     void Update()
     {
-        TogglePlatforms();
+        
+            TogglePlatforms();
 
-        ToggleDoors();
+            ToggleDoors();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

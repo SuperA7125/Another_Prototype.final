@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Beacon : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Beacon : MonoBehaviour
     public CameraController cameraController;
 
     public Transform startingCamPos;
+
+    public Light2D light2D;
+
     public bool isPlayerNearby = false;
 
     public Shadow ShadowPlayer;
@@ -70,6 +74,7 @@ public class Beacon : MonoBehaviour
 
         isBeaconActive = true;
         animator.Play("On");
+        light2D.enabled = true;
 
         yield return new WaitForSeconds(2f);
 
