@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class Lantern : MonoBehaviour
 {
@@ -14,14 +15,18 @@ public class Lantern : MonoBehaviour
 
     public Light lightPlayer;
 
+    public Light2D light2D;
+
     public TextMeshProUGUI interactText;
 
     public AudioClip LanternOnSfx;
 
     public AudioClip LanternOffSfx;
 
+    Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
         /*interactText.transform.position = transform.position + new Vector3(0, 1.2f, 0);
         interactText.transform.localScale = Vector3.one * 0.03f;
         interactText.text = "";*/
@@ -64,19 +69,25 @@ public class Lantern : MonoBehaviour
     {
         if (isShadowOn)
         {
+            animator.Play("Off");
+            light2D.enabled = false;
             foreach (GameObject obj in LightObjectWithShadows)
             {
                 foreach (Transform child in obj.transform)
                 {
+                    
                     isShadowOn = false;
                     child.gameObject.SetActive(false);
                     AudioManager.Instance.PlaySFXOneShot(LanternOffSfx);
+                    
                 }
             }
 
         }
         else if (!isShadowOn)
         {
+            animator.Play("On");
+            light2D.enabled = true;
             foreach (GameObject obj in LightObjectWithShadows)
             {
                 foreach (Transform child in obj.transform)
@@ -84,6 +95,7 @@ public class Lantern : MonoBehaviour
                     isShadowOn = true;
                     child.gameObject.SetActive(true);
                     AudioManager.Instance.PlaySFXOneShot(LanternOnSfx);
+                    
                 }
             }
         }
