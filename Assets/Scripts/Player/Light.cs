@@ -37,6 +37,9 @@ public class Light : MonoBehaviour
     public float rayLength;
 
     private float horizontal;
+
+    
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -125,6 +128,13 @@ public class Light : MonoBehaviour
 
         shadowRenderer.flipX = spriteRenderer.flipX;
         
+    }
+
+    public void PlayLightFootSteps(AudioClip clip)
+    {
+        float randomPitch = Random.Range(1.0f, 3.0f);
+
+        AudioManager.Instance.PlaySFXCustom(clip ,1.0f, randomPitch);
     }
 
     

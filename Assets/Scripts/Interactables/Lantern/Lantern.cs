@@ -16,6 +16,10 @@ public class Lantern : MonoBehaviour
 
     public TextMeshProUGUI interactText;
 
+    public AudioClip LanternOnSfx;
+
+    public AudioClip LanternOffSfx;
+
     void Start()
     {
         /*interactText.transform.position = transform.position + new Vector3(0, 1.2f, 0);
@@ -66,6 +70,7 @@ public class Lantern : MonoBehaviour
                 {
                     isShadowOn = false;
                     child.gameObject.SetActive(false);
+                    AudioManager.Instance.PlaySFXOneShot(LanternOffSfx);
                 }
             }
 
@@ -78,6 +83,7 @@ public class Lantern : MonoBehaviour
                 {
                     isShadowOn = true;
                     child.gameObject.SetActive(true);
+                    AudioManager.Instance.PlaySFXOneShot(LanternOnSfx);
                 }
             }
         }
