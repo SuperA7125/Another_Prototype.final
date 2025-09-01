@@ -32,10 +32,7 @@ public class Beacon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby && ShadowPlayer.enabled && !isBeaconActive)
-        {
-            StartCoroutine(ActivateBeaconSequnce());
-        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -54,18 +51,14 @@ public class Beacon : MonoBehaviour
         }
     }
 
-    void ActivateShadow()
+    public void ActivateBeacon()
     {
-        foreach (GameObject obj in LightObjects)
-        {
-            foreach (Transform child in obj.transform)
-            {
-                child.gameObject.SetActive(true);
 
-            }
+        if (!isBeaconActive)
+        {
+            StartCoroutine(ActivateBeaconSequnce());
         }
     }
-
     IEnumerator ActivateBeaconSequnce()
     {
         cameraController.SetOverride(startingCamPos);
