@@ -108,6 +108,7 @@ MonoBehaviour:
   isLeverOn: 0
   isPlayerNearby: 0
   shadowPlayer: {fileID: 0}
+  LeverSfx: {fileID: 8300000, guid: 5d98c4b01acb9474ca8677e78f1c2117, type: 3}
 --- !u!61 &6771579641409636664
 BoxCollider2D:
   m_ObjectHideFlags: 0

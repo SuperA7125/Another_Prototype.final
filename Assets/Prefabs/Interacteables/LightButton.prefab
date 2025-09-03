@@ -106,6 +106,8 @@ MonoBehaviour:
   ShadowPlatforms: []
   ShadowDoors: []
   isPressed: 0
+  ButtonOnSfx: {fileID: 8300000, guid: 95626881405ba474c99433e1ae2dc210, type: 3}
+  ButtonOffSfx: {fileID: 8300000, guid: d4fc45148abc12c4aa9d069e5b908a5c, type: 3}
 --- !u!95 &1106319308864755892
 Animator:
   serializedVersion: 7

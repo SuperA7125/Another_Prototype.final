@@ -132,9 +132,9 @@ public class Light : MonoBehaviour
 
     public void PlayLightFootSteps(AudioClip clip)
     {
-        float randomPitch = Random.Range(1.0f, 3.0f);
+       
 
-        AudioManager.Instance.PlaySFXCustom(clip ,1.0f, randomPitch);
+        AudioManager.Instance.PlaySFXCustom(clip ,1.0f);
     }
 
     

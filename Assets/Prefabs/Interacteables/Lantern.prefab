@@ -139,7 +139,10 @@ MonoBehaviour:
   isShadowOn: 0
   isPlayerNearby: 0
   lightPlayer: {fileID: 0}
+  light2D: {fileID: 0}
   interactText: {fileID: 0}
+  LanternOnSfx: {fileID: 8300000, guid: ddaf67c7c8e26af47b455e8bab04967c, type: 3}
+  LanternOffSfx: {fileID: 8300000, guid: 2aeaaa1d54caf4e4d99e77bcf096ad45, type: 3}
 --- !u!95 &496752786441438744
 Animator:
   serializedVersion: 7

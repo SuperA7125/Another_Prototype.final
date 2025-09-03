@@ -101,7 +101,7 @@ public class Shadow : MonoBehaviour
         {
             
 
-            AudioManager.Instance.PlaySFXCustom(clip, 1.0f, randomPitch);
+            AudioManager.Instance.PlaySFXCustom(clip, 1.0f);
         }
         
     }
