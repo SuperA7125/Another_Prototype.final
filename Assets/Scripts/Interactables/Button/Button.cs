@@ -12,6 +12,10 @@ public class Button : MonoBehaviour
 
     [SerializeField] private bool isPressed = false;
 
+    public AudioClip ButtonOnSfx;
+
+    public AudioClip ButtonOffSfx;
+
     void Start()
     {
             foreach (ShadowDoors door in ShadowDoors)
@@ -36,6 +40,7 @@ public class Button : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPressed = true;
+            AudioManager.Instance.PlaySFXOneShot(ButtonOnSfx);
         }
         
     }
@@ -45,6 +50,7 @@ public class Button : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPressed = false;
+            AudioManager.Instance.PlaySFXOneShot(ButtonOffSfx);
         }
     }
     void TogglePlatforms()
@@ -90,6 +96,9 @@ public class Button : MonoBehaviour
             }
         }
     }
+
+  
+
 }
 [System.Serializable]
 public class ShadowDoors

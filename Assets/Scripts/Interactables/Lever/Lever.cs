@@ -13,6 +13,7 @@ public class Lever : MonoBehaviour
 
     public Shadow shadowPlayer;
 
+    public AudioClip LeverSfx;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +27,8 @@ public class Lever : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby && shadowPlayer.enabled)
         {
             ToggleLight();
+
+            AudioManager.Instance.PlaySFXOneShot(LeverSfx);
         }
     }
 

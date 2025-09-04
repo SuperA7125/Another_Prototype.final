@@ -19,6 +19,10 @@ public class Lantern : MonoBehaviour
 
     public TextMeshProUGUI interactText;
 
+    public AudioClip LanternOnSfx;
+
+    public AudioClip LanternOffSfx;
+
     Animator animator;
     void Start()
     {
@@ -40,11 +44,11 @@ public class Lantern : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        { 
+        {
             isPlayerNearby = true;
-            if (interactText != null) 
-            { 
-                interactText.text = "Press E"; 
+            if (interactText != null)
+            {
+                interactText.text = "Press E";
             }
         }
     }
@@ -52,7 +56,7 @@ public class Lantern : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        { 
+        {
             isPlayerNearby = false;
             if (interactText != null)
             {
@@ -71,10 +75,11 @@ public class Lantern : MonoBehaviour
             {
                 foreach (Transform child in obj.transform)
                 {
-                    
+
                     isShadowOn = false;
                     child.gameObject.SetActive(false);
-                    
+                    AudioManager.Instance.PlaySFXOneShot(LanternOffSfx);
+
                 }
             }
 
@@ -89,7 +94,8 @@ public class Lantern : MonoBehaviour
                 {
                     isShadowOn = true;
                     child.gameObject.SetActive(true);
-                    
+                    if (AudioManager.Instance) AudioManager.Instance.PlaySFXOneShot(LanternOnSfx);
+
                 }
             }
         }

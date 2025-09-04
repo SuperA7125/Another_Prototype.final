@@ -93,6 +93,19 @@ public class Shadow : MonoBehaviour
             StartCoroutine(SwitchToLightAfterAnimation());
     }
 
+     //if (!lightScript.enabled)
+
+    public void PlayShadowFootSteps(AudioClip clip)
+    {
+         if (!lightScript.enabled)
+        {
+            
+
+            AudioManager.Instance.PlaySFXCustom(clip, 1.0f);
+        }
+        
+    }
+
     void GroundCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLength, shadowGround);
