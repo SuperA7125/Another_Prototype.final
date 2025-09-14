@@ -99,8 +99,6 @@ public class Shadow : MonoBehaviour
     {
          if (!lightScript.enabled)
         {
-            
-
             AudioManager.Instance.PlaySFXCustom(clip, 1.0f);
         }
         
