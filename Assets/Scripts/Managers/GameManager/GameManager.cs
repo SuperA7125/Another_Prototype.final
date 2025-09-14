@@ -42,9 +42,9 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer(GameObject player)
     {
-        if (lastCheckpointPos != Vector2.zero)
+        if (lastCheckpointPos != default)
         {
-            player.transform.position = new Vector3(lastCheckpointPos.x, lastCheckpointPos.y + 3f,0);
+            player.transform.position = new Vector3(lastCheckpointPos.x, lastCheckpointPos.y + 0.5f,0);
         }
     }
 }

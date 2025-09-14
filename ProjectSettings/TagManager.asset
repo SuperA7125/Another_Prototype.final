@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4135020143
+    locked: 0
   - name: BrickWalls
     uniqueID: 1414609281
     locked: 0
