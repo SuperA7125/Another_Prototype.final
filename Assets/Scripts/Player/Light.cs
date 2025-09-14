@@ -121,6 +121,11 @@ public class Light : MonoBehaviour
     {
         StartCoroutine(DeathAndRespawn());
     }
+
+    public void StartDeath()
+    {
+        StartCoroutine(Death());
+    }
     void SetShadowPos()
     {
         shadowOffsetX = spriteRenderer.flipX ? 0.05f : -0.05f;
@@ -142,9 +147,6 @@ public class Light : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLength, lightGround);
 
-        /*Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.green,14444f);
-        Debug.Log(hit.ToString());*/
-        //Debug.Log(hit.collider);
         if (hit.collider != null)
         {
             hasJumped = false;
@@ -209,5 +211,14 @@ public class Light : MonoBehaviour
         yield return new WaitForSeconds(0.06f);
 
         isDead = false;
+    }
+
+    IEnumerator Death()
+    {
+        animator.Play("Disappear");
+        shadowAnimator.Play("Disappear");
+
+        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(currentStateInfo.length - 0.1f);
     }
 }
