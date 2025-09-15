@@ -6,92 +6,65 @@ using UnityEngine.Rendering.Universal;
 
 public class Beacon : MonoBehaviour
 {
-
+    //List of Light objects that will cast shadows when the beacon is activated
     public List<GameObject> LightObjects = new List<GameObject>();
 
-    public CameraController cameraController;
+    //Camera Refrences to pan over when the beacon is activated
+    public CameraController CameraController;
+    public Transform StartingCamPos;
 
-    public Transform startingCamPos;
+    //Light2D refrence to the _lightPlayer of the beacon itself to set active when activated
+    public Light2D Light2D;
 
-    public Light2D light2D;
 
-    public bool isPlayerNearby = false;
+    private int _currentIndex = 0;
 
-    public Shadow ShadowPlayer;
+    private bool _isBeaconActive = false;
 
-    int currentIndex = 0;
-
-    Animator animator;
-
-    bool isBeaconActive = false;
+    private Animator _animator;
     void Start()
     {
-        animator = GetComponent<Animator>();
-    }
-
-
-    void Update()
-    {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("PlayerShadow"))
-        {
-            isPlayerNearby = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("PlayerShadow"))
-        {
-            isPlayerNearby = false;
-        }
+        _animator = GetComponent<Animator>();
     }
 
     public void ActivateBeacon()
     {
 
-        if (!isBeaconActive)
+        if (!_isBeaconActive)
         {
             StartCoroutine(ActivateBeaconSequnce());
         }
     }
     IEnumerator ActivateBeaconSequnce()
     {
-        cameraController.SetOverride(startingCamPos);
+        CameraController.SetOverride(StartingCamPos); 
 
         yield return new WaitForSeconds(0.5f);
 
-        isBeaconActive = true;
-        animator.Play("On");
-        light2D.enabled = true;
+        _isBeaconActive = true;
+        _animator.Play("On");
+        Light2D.enabled = true;
 
         yield return new WaitForSeconds(2f);
 
-        while (currentIndex < LightObjects.Count)
+        while (_currentIndex < LightObjects.Count) //As long as there is Light object on the list conintue 
         {
-            GameObject obj = LightObjects[currentIndex];
+            GameObject obj = LightObjects[_currentIndex]; //Get the object in the current index
+            Transform cameraFocus = obj.transform.Find("CameraFocus"); //Find a child transform that the camera will Focus on
+            CameraController.SetOverride(cameraFocus); //Set that as the new camera focus
 
-            Transform cameraFocus = obj.transform.Find("CameraFocus");
+            yield return new WaitForSeconds(6f); //Wait for the camera to get there
 
-            cameraController.SetOverride(cameraFocus);
-
-            yield return new WaitForSeconds(6f);
-
-            Transform child = obj.transform.Find("ShadowObject");
-
-            child.gameObject.SetActive(true);
+            Transform child = obj.transform.Find("ShadowObject"); //Get the objects _shadowPlayer
+            child.gameObject.SetActive(true); //Set the _shadowPlayer active
             
 
-            currentIndex++;
+            _currentIndex++; //Grow index
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(3f); //Wait a litte more so you can see the _shadowPlayer showing up
         }
 
-        cameraController.ClearOverride();
+        CameraController.ClearOverride(); //Once done reset camera to the player
 
     }
 }

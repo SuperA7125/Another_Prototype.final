@@ -4,9 +4,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public AudioSource musicSource;
-    public AudioSource sfxSource;
+    //Sources to output the music from
+    public AudioSource MusicSource;
+    public AudioSource SfxSource;
 
+    //Clip of the Background music
     public AudioClip BackgroundMusic;
     void Awake()
     {
@@ -20,18 +22,18 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip, float volume = 1.0f, float pitch = 1.0f)
     {
-        musicSource.loop = true;
-        musicSource.volume = volume;
-        musicSource.clip = clip;
-        musicSource.Play();
+        MusicSource.loop = true;
+        MusicSource.volume = volume;
+        MusicSource.clip = clip;
+        MusicSource.Play();
     }
 
     public void PlaySFXOneShot(AudioClip clip, float volume = 1.0f)
     {
-        sfxSource.clip = clip;
-        sfxSource.volume = volume;
+        SfxSource.clip = clip;
+        SfxSource.volume = volume;
 
-        sfxSource.PlayOneShot(clip, volume);
+        SfxSource.PlayOneShot(clip, volume);
     }
 
     public void PlaySFXCustom(AudioClip clip, float volume = 1.0f, float randomPitch = 1.0f)
@@ -50,13 +52,13 @@ public class AudioManager : MonoBehaviour
         randomPitch = Random.Range(1.0f, 3.0f);
 
         if (randomPitch < 0.0f)
-            sfxAudioSource.time = sfxAudioSource.clip.length - 0.01f; // Start from the end of the clip
+            sfxAudioSource.time = sfxAudioSource.clip.length - 0.01f; 
 
         sfxAudioSource.Play();
 
         float adjustedDuration = clip.length / Mathf.Abs(randomPitch);
         Destroy(sfxObj, adjustedDuration);
-    }
+    } // Play footsteps
 
 
 }

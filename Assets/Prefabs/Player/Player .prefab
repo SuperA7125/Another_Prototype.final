@@ -50,20 +50,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e12c08226998e418ce6b33b564de42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 5
-  hasJumped: 0
-  animator: {fileID: 3683919808171208501}
-  shadowAnimator: {fileID: 3554213499845685282}
-  state: 0
-  shadowObj: {fileID: 3392218581986733728}
-  lightObj: {fileID: 103042364053117000}
-  shadowNeedsActivition: 1
-  lightRb: {fileID: 4735883470252918524}
-  lightGround:
+  MoveSpeed: 5
+  JumpForce: 5
+  Animator: {fileID: 3683919808171208501}
+  ShadowAnimator: {fileID: 3554213499845685282}
+  State: 0
+  ShadowObj: {fileID: 3392218581986733728}
+  LightObj: {fileID: 103042364053117000}
+  ShadowNeedsActivition: 1
+  LightRb: {fileID: 4735883470252918524}
+  LightGround:
     serializedVersion: 2
     m_Bits: 256
-  rayLength: 0.6
+  RayLength: 0.7
 --- !u!212 &5834509503618730613
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -296,16 +295,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce285e2332cfc5c49998375aa6a25b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 5
-  animator: {fileID: 3554213499845685282}
-  state: 0
-  lightObj: {fileID: 103042364053117000}
-  shadowRb: {fileID: 342876139677818871}
-  shadowGround:
+  MoveSpeed: 5
+  JumpForce: 5
+  Animator: {fileID: 3554213499845685282}
+  State: 0
+  LightObj: {fileID: 103042364053117000}
+  ShadowRb: {fileID: 342876139677818871}
+  ShadowGround:
     serializedVersion: 2
     m_Bits: 512
-  rayLength: 0.6
+  RayLength: 0.7
 --- !u!212 &148488718868387348
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -3,37 +3,36 @@ using UnityEngine;
 
 public class Shadow : MonoBehaviour
 {
-    public float speed = 5.0f;
+    //Basic movement stats
+    public float MoveSpeed = 5.0f;
+    public float JumpForce = 1f;   
+    private bool _hasJumped = false;
 
-    public float jumpForce = 1f;   
+    //Animator and stat to control the animations
+    public Animator Animator;
+    public PlayerState State;
 
-    bool hasJumped = false;
+    //Sprite renderer to control the flip x
+    private SpriteRenderer _spriteRenderer;
 
-    public Animator animator;
+    //Light refrences 
+    public GameObject LightObj;
+    private Light _lightScript;
 
-    public PlayerState state;
+    public Rigidbody2D ShadowRb;
 
-    private SpriteRenderer spriteRenderer;
+    //Raycast setting
+    public LayerMask ShadowGround;
+    public float RayLength;
 
-    public GameObject lightObj;
-
-    Light lightScript;
-
-    public Rigidbody2D shadowRb;
-
-    public LayerMask shadowGround;
-
-    public float rayLength;
-
-    private float horizontal;
+    private float _horizontal;
 
     
     void Start()
     {
-        
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        lightScript = lightObj.GetComponentInChildren<Light>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        Animator = GetComponent<Animator>();
+        _lightScript = LightObj.GetComponentInChildren<Light>();
         
     }
 
@@ -48,56 +47,57 @@ public class Shadow : MonoBehaviour
         {
             GroundCheck();
 
-            Debug.DrawRay(transform.position, Vector2.down * 1f, Color.green);
-
             if (Input.GetKeyDown(KeyCode.G))
             {
-                Debug.Log("Key Down!");
                 ToggleMode();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !hasJumped)
-            {
-                hasJumped = true;
-                shadowRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-            }
-            horizontal = Input.GetAxis("Horizontal");
+            Jump();
 
+            _horizontal = Input.GetAxis("Horizontal");
 
-            animator.Play(state.ToString());
+            Animator.Play(State.ToString());
         }
-
-        Debug.Log(state.ToString());
     }
+
+  
 
     private void FixedUpdate()
     {
-        
-        
-            if (horizontal != 0)
-            {
-                state = PlayerState.Walk;
-                transform.position += Vector3.right * (horizontal * speed * Time.deltaTime);
+        Move();
+    }
 
-                spriteRenderer.flipX = horizontal > 0;
-            }
-            else
-            {
-                    state = PlayerState.Idle; 
-            }
-        
+    private void Move()
+    {
+        if (_horizontal != 0)
+        {
+            State = PlayerState.Walk;
+            transform.position += Vector3.right * (_horizontal * MoveSpeed * Time.deltaTime);
+
+            _spriteRenderer.flipX = _horizontal > 0;
+        }
+        else
+        {
+            State = PlayerState.Idle;
+        }
+    }
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !_hasJumped)
+        {
+            _hasJumped = true;
+            ShadowRb.AddForce(Vector3.up * JumpForce, ForceMode2D.Impulse);
+        }
     }
     public void ToggleMode()
     {
-        if (!lightScript.enabled)
+        if (!_lightScript.enabled)
             StartCoroutine(SwitchToLightAfterAnimation());
     }
 
-     //if (!lightScript.enabled)
-
     public void PlayShadowFootSteps(AudioClip clip)
     {
-         if (!lightScript.enabled)
+         if (!_lightScript.enabled)
         {
             AudioManager.Instance.PlaySFXCustom(clip, 1.0f);
         }
@@ -106,28 +106,23 @@ public class Shadow : MonoBehaviour
 
     void GroundCheck()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLength, shadowGround);
-
-        /*Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.green);
-        Debug.Log(hit.ToString());*/
-        //Debug.Log(hit.collider);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, RayLength, ShadowGround);
         if (hit.collider != null)
         {
-            hasJumped = false;
+            _hasJumped = false;
             return;
         }
         else
         {
-            hasJumped = true;
-            state = PlayerState.Jump;
+            _hasJumped = true;
+            State = PlayerState.Jump;
             
         }
     }
-    
 
     bool IsAnimationRunning(string animationName)
     {
-        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo currentStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
         if (currentStateInfo.IsName(animationName))
         {
             if (currentStateInfo.normalizedTime < 0.95f)
@@ -142,21 +137,21 @@ public class Shadow : MonoBehaviour
     {
         ResetGravity();
 
-        state = PlayerState.Disappear;
-        animator.Play(state.ToString());
-        AnimatorStateInfo currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        State = PlayerState.Disappear;
+        Animator.Play(State.ToString());
+        AnimatorStateInfo currentStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitForSeconds(currentStateInfo.length - 0.1f);
 
-        transform.position = lightObj.transform.position + new Vector3(-0.2f, 0, 0);
-        lightScript.enabled = true;
+        transform.position = LightObj.transform.position + new Vector3(-0.2f, 0, 0);
+        _lightScript.enabled = true;
         this.enabled = false;
     }
 
     
         void ResetGravity()
     {
-        shadowRb.gravityScale = 1;
-        shadowRb.linearVelocity = Vector2.zero;
-        shadowRb.angularVelocity = 0;
-    }
+        ShadowRb.gravityScale = 1;
+        ShadowRb.linearVelocity = Vector2.zero;
+        ShadowRb.angularVelocity = 0;
+    } //Reset garavity so it wont accmulat while not in shadow mode
 }

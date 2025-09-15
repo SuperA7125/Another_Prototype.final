@@ -28525,6 +28525,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 268796032}
     m_Modifications:
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
       objectReference: {fileID: 17067721}
@@ -30305,6 +30309,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 268796032}
     m_Modifications:
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
       objectReference: {fileID: 17067721}
@@ -31783,8 +31791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5a148da9c82ae45ab534870ab6f4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 394257615}
-  sfxSource: {fileID: 394257614}
+  MusicSource: {fileID: 394257615}
+  SfxSource: {fileID: 394257614}
   BackgroundMusic: {fileID: 8300000, guid: b28bf9533c4da1b44b289ddd54478cef, type: 3}
 --- !u!4 &394257617
 Transform:
@@ -36316,6 +36324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268796032}
     m_Modifications:
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
@@ -78493,6 +78505,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 795362955}
     m_Modifications:
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
       objectReference: {fileID: 17067721}
@@ -78591,6 +78607,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 795362955}
     m_Modifications:
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
@@ -80720,12 +80740,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405bfd96dc370d14190c15fe3d6b10d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraObj: {fileID: 1280832716}
-  isFollowingLight: 1
-  lightPlayer: {fileID: 1524487106}
-  shadowPlayer: {fileID: 17067715}
-  yOffset: 1
-  followSpeed: 5
+  CameraObj: {fileID: 1280832716}
+  IsFollowingLight: 1
+  LightPlayer: {fileID: 1524487106}
+  ShadowPlayer: {fileID: 17067715}
+  YOffset: 1
+  FollowSpeed: 5
 --- !u!114 &1280832714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126504,6 +126524,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 268796032}
     m_Modifications:
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
       objectReference: {fileID: 17067721}
@@ -126911,6 +126935,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268796032}
     m_Modifications:
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
@@ -127792,6 +127820,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268796032}
     m_Modifications:
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 
@@ -128911,6 +128943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268796032}
     m_Modifications:
+    - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
+      propertyPath: ShadowPlayer
+      value: 
+      objectReference: {fileID: 17067721}
     - target: {fileID: 3753907228061060131, guid: 98b1cc952dc28374e96b1a9b2dbd3214, type: 3}
       propertyPath: shadowPlayer
       value: 

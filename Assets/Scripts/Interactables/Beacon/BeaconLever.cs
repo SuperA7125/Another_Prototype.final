@@ -2,37 +2,33 @@ using UnityEngine;
 
 public class BeaconLever : MonoBehaviour
 {
+    //Refrence to the beacon that needs to be activated
     public Beacon beacon;
 
-    bool isPlayerNearby = false;
+    //Booleans to check if the player is close and make sure the lever can only be activated and not turned off
+    private bool _isPlayerNearby = false;
+    private bool _isLeverBeenActivated = false;
 
-    bool isLeverBeenActivated = false;
+    private Animator _animator;
 
-    Animator animator;
+    public Shadow ShadowPlayer; //Refeance to check if the player is playing as the _shadowPlayer or _lightPlayer
 
-    public Shadow ShadowPlayer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = GetComponent<Animator>();
+        ShadowPlayer = FindAnyObjectByType<Shadow>();
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby && !isLeverBeenActivated &&  ShadowPlayer.enabled)
-        {
-            animator.Play("LeverOn");
-            beacon.ActivateBeacon();
-            isLeverBeenActivated = true;
-        }
+        CheckPlayerActivatingLever();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("PlayerShadow"))
         {
-            isPlayerNearby = true;
+            _isPlayerNearby = true;
         }
     }
 
@@ -40,7 +36,18 @@ public class BeaconLever : MonoBehaviour
     {
         if (other.CompareTag("PlayerShadow"))
         {
-            isPlayerNearby = false;
+            _isPlayerNearby = false;
         }
     }
+
+    private void CheckPlayerActivatingLever()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && _isPlayerNearby && !_isLeverBeenActivated && ShadowPlayer.enabled)
+        {
+            _animator.Play("LeverOn");
+            beacon.ActivateBeacon();
+            _isLeverBeenActivated = true;
+        }
+    }
+
 }
