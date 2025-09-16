@@ -4,47 +4,47 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private Vector2 lastCheckpointPos;
+    private Vector2 _lastCheckpointPos;
 
+    [SerializeField] private int _activeBeaconsCount = 0;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetLastCheckpoint(Vector2 Pos)
     {
-        lastCheckpointPos = Pos;
+        _lastCheckpointPos = Pos;
     }
 
     public Vector2 GetLastCheckpoint()
     {
-        return lastCheckpointPos;
+        return _lastCheckpointPos;
     }
 
     public void RespawnPlayer(GameObject player)
     {
-        if (lastCheckpointPos != default)
+        if (_lastCheckpointPos != default)
         {
-            player.transform.position = new Vector3(lastCheckpointPos.x, lastCheckpointPos.y + 0.5f,0);
+            player.transform.position = new Vector3(_lastCheckpointPos.x, _lastCheckpointPos.y + 0.5f,0);
         }
+    }
+
+    public void AddBeaconToCount() 
+    { 
+        _activeBeaconsCount++;
+
+        if (_activeBeaconsCount == 3)
+        {
+            ScenesManager.Instance.DieAndLoadNextScene();
+        }
+    
     }
 }

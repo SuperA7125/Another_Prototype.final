@@ -103,12 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0499b2e8076f3b4e83bc451275bf4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   LightObjectToToggle:
   - {fileID: 0}
-  isLeverOn: 0
-  isPlayerNearby: 0
-  shadowPlayer: {fileID: 0}
+  IsLeverOn: 0
+  IsPlayerNearby: 0
+  ShadowPlayer: {fileID: 0}
   LeverSfx: {fileID: 8300000, guid: 5d98c4b01acb9474ca8677e78f1c2117, type: 3}
 --- !u!61 &6771579641409636664
 BoxCollider2D:

@@ -3,28 +3,29 @@ using UnityEngine;
 
 public class Lever : MonoBehaviour
 {
-    public Animator animator;
+    private Animator _animator;
 
+    //List of light objects that can be toggled by the 
     public List<GameObject> LightObjectToToggle = new List<GameObject>();
 
-    public bool isLeverOn = true;
+    //Booleans that check if the player is playing as shadow and is nearby
+    public bool IsLeverOn = false;
+    public bool IsPlayerNearby;
 
-    public bool isPlayerNearby;
+    public Shadow ShadowPlayer;//Refrence to the shadow player
 
-    public Shadow shadowPlayer;
-
+    //Audio Refrences
     public AudioClip LeverSfx;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = GetComponent<Animator>();
+        ShadowPlayer = FindAnyObjectByType<Shadow>();
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby && shadowPlayer.enabled)
+        if (Input.GetKeyDown(KeyCode.E) && IsPlayerNearby && ShadowPlayer.enabled)
         {
             ToggleLight();
 
@@ -36,7 +37,7 @@ public class Lever : MonoBehaviour
     {
         if (other.CompareTag("PlayerShadow"))
         {
-            isPlayerNearby = true;
+            IsPlayerNearby = true;
         }
     }
 
@@ -44,29 +45,39 @@ public class Lever : MonoBehaviour
     {
         if (other.CompareTag("PlayerShadow"))
         {
-            isPlayerNearby = false;
+            IsPlayerNearby = false;
         }
     }
 
     void ToggleLight()
     {
-        if (isLeverOn)
+        if (IsLeverOn)
         {
-            animator.Play("LeverOff");
-            foreach (GameObject obj in LightObjectToToggle)
-            {
-                obj.SetActive(false);
-            }
-            isLeverOn = false;
+            SetLightOff();
         }
         else
         {
-            animator.Play("LeverOn");
-            foreach (GameObject obj in LightObjectToToggle)
-            {
-                obj.SetActive(true);
-            }
-            isLeverOn = true;
-        }    
+            SetLightOn();
+        }
+    }
+
+    private void SetLightOn()
+    {
+        _animator.Play("LeverOn");
+        foreach (GameObject obj in LightObjectToToggle)
+        {
+            obj.SetActive(true);
+        }
+        IsLeverOn = true;
+    }
+
+    private void SetLightOff()
+    {
+        _animator.Play("LeverOff");
+        foreach (GameObject obj in LightObjectToToggle)
+        {
+            obj.SetActive(false);
+        }
+        IsLeverOn = false;
     }
 }

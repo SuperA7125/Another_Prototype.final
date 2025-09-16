@@ -4,42 +4,39 @@ using UnityEngine.Tilemaps;
 
 public class Button : MonoBehaviour
 {
-    public Animator animator;
+    private Animator _animator;
 
+    //List of shadow platforms that are only active while on the button
     public List<GameObject> ShadowPlatforms = new List<GameObject>();
 
+    //List of shadow doors that move while on the button
     public List<ShadowDoors> ShadowDoors = new List<ShadowDoors>();
 
-    [SerializeField] private bool isPressed = false;
+    [SerializeField] private bool _isPressed = false;
 
+    //Audio Refences
     public AudioClip ButtonOnSfx;
-
     public AudioClip ButtonOffSfx;
 
     void Start()
     {
-            foreach (ShadowDoors door in ShadowDoors)
-            {
-                door.startingPos = door.shadowDoor.transform.position;
-                door.SetHight();
-            }
+        _animator = GetComponent<Animator>();
+        SetDoors();
     }
 
-    
+   
+
     void Update()
     {
-        
-            TogglePlatforms();
-
-            ToggleDoors();
-        
+        TogglePlatforms();
+        ToggleDoors();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            isPressed = true;
+            _isPressed = true;
             AudioManager.Instance.PlaySFXOneShot(ButtonOnSfx);
         }
         
@@ -49,15 +46,15 @@ public class Button : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPressed = false;
+            _isPressed = false;
             AudioManager.Instance.PlaySFXOneShot(ButtonOffSfx);
         }
     }
     void TogglePlatforms()
     {
-        if (isPressed)
+        if (_isPressed)
         {
-            animator.SetBool("IsActive", true);
+            _animator.SetBool("IsActive", true);
             foreach (GameObject platform in ShadowPlatforms)
             {
                 platform.gameObject.SetActive(true);
@@ -65,7 +62,7 @@ public class Button : MonoBehaviour
         }
         else
         {
-            animator.SetBool("IsActive", false);
+            _animator.SetBool("IsActive", false);
             foreach (GameObject platform in ShadowPlatforms)
             {
                 platform.gameObject.SetActive(false);
@@ -75,51 +72,68 @@ public class Button : MonoBehaviour
 
     void ToggleDoors()
     {
-        if (isPressed)
+        if (_isPressed)
         {
-            animator.SetBool("IsActive", true);
-            foreach (ShadowDoors door in ShadowDoors)
-            {
-                Vector3 currentPos = door.shadowDoor.transform.position;
-                Vector3 targetPos = new Vector3(door.startingPos.x, door.startingPos.y - door.hight, door.startingPos.z);
-                door.shadowDoor.transform.position = Vector3.MoveTowards(currentPos, targetPos, door.speed * Time.deltaTime);
-            }
+            SetDoorsActive();
         }
         else
         {
-            animator.SetBool("IsActive", false);
-            foreach (ShadowDoors door in ShadowDoors)
-            {
-                Vector3 currentPos = door.shadowDoor.transform.position;
-                Vector3 targetPos = door.startingPos;
-                door.shadowDoor.transform.position = Vector3.MoveTowards(currentPos, targetPos, door.speed * Time.deltaTime);
-            }
+            SetDoorsDeactive();
         }
     }
 
-  
+    private void SetDoorsDeactive()
+    {
+        _animator.SetBool("IsActive", false);
+        foreach (ShadowDoors door in ShadowDoors)
+        {
+            Vector3 currentPos = door.ShadowDoor.transform.position;
+            Vector3 targetPos = door.StartingPos;
+            door.ShadowDoor.transform.position = Vector3.MoveTowards(currentPos, targetPos, door.DoorMoveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void SetDoorsActive()
+    {
+        _animator.SetBool("IsActive", true);
+        foreach (ShadowDoors door in ShadowDoors)
+        {
+            Vector3 currentPos = door.ShadowDoor.transform.position;
+            Vector3 targetPos = new Vector3(door.StartingPos.x, door.StartingPos.y - door.DoorHight, door.StartingPos.z);
+            door.ShadowDoor.transform.position = Vector3.MoveTowards(currentPos, targetPos, door.DoorMoveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void SetDoors()
+    {
+        foreach (ShadowDoors door in ShadowDoors)
+        {
+            door.StartingPos = door.ShadowDoor.transform.position;
+            door.SetHight();
+        }
+    }
 
 }
 [System.Serializable]
 public class ShadowDoors
 {
-    public GameObject shadowDoor;
+    public GameObject ShadowDoor;
 
-    public Vector3 startingPos;
+    public Vector3 StartingPos;
 
-    public int numberOfTiles;
+    public int NumberOfTiles;
 
-    public float hight;
+    public float DoorHight;
 
-    public float speed = 1f;
+    public float DoorMoveSpeed = 1f;
 
     public void SetHight()
     {
-        Tilemap tilemap =  shadowDoor.GetComponent<Tilemap>();
+        Tilemap tilemap =  ShadowDoor.GetComponent<Tilemap>();
         if (tilemap != null)
         {
             float tileHeight = tilemap.layoutGrid.cellSize.y;
-            hight = tileHeight * numberOfTiles;
+            DoorHight = tileHeight * NumberOfTiles;
         }
     }
 }

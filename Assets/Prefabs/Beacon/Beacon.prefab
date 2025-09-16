@@ -160,11 +160,9 @@ MonoBehaviour:
   LightObjects:
   - {fileID: 0}
   - {fileID: 0}
-  cameraController: {fileID: 0}
-  startingCamPos: {fileID: 4364579654462027188}
-  light2D: {fileID: 7869795659578587467}
-  isPlayerNearby: 0
-  ShadowPlayer: {fileID: 0}
+  CameraController: {fileID: 0}
+  StartingCamPos: {fileID: 4364579654462027188}
+  Light2D: {fileID: 7869795659578587467}
 --- !u!61 &4322250094875459475
 BoxCollider2D:
   m_ObjectHideFlags: 0

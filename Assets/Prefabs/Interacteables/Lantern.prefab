@@ -138,11 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightObjectWithShadows:
   - {fileID: 0}
-  isShadowOn: 0
-  isPlayerNearby: 0
-  lightPlayer: {fileID: 0}
-  light2D: {fileID: 6172086308648280277}
-  interactText: {fileID: 0}
+  IsShadowOn: 0
+  IsPlayerNearby: 0
+  LightPlayer: {fileID: 0}
+  Light2D: {fileID: 6172086308648280277}
   LanternOnSfx: {fileID: 8300000, guid: ddaf67c7c8e26af47b455e8bab04967c, type: 3}
   LanternOffSfx: {fileID: 8300000, guid: 2aeaaa1d54caf4e4d99e77bcf096ad45, type: 3}
 --- !u!95 &496752786441438744

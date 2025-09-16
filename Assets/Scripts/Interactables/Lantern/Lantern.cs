@@ -6,36 +6,32 @@ using UnityEngine.Rendering.Universal;
 
 public class Lantern : MonoBehaviour
 {
-
+    //List Of Objects that the lantern can activat their shadows
     public List<GameObject> LightObjectWithShadows = new List<GameObject>();
 
-    public bool isShadowOn = false;
+    public bool IsShadowOn = false; //Checks if the stats of the shadows 
+    public bool IsPlayerNearby = false; //Checks if the player is nearby
 
-    public bool isPlayerNearby = false;
+    //Refrence to check if the player is playing as _lightPlayer
+    public Light LightPlayer;
 
-    public Light lightPlayer;
+    public Light2D Light2D;//The lantern Light2D to be able to set active 
 
-    public Light2D light2D;
-
-    public TextMeshProUGUI interactText;
-
+    //Audio Refrences
     public AudioClip LanternOnSfx;
-
     public AudioClip LanternOffSfx;
 
-    Animator animator;
+    private Animator _animator;
     void Start()
     {
-        animator = GetComponent<Animator>();
-        /*interactText.transform.position = transform.position + new Vector3(0, 1.2f, 0);
-        interactText.transform.localScale = Vector3.one * 0.03f;
-        interactText.text = "";*/
+        LightPlayer = FindAnyObjectByType<Light>();
+        _animator = GetComponent<Animator>();
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby && lightPlayer.enabled)
+        if (Input.GetKeyDown(KeyCode.E) && IsPlayerNearby && LightPlayer.enabled)
         {
             ToggleShadow();
         }
@@ -45,11 +41,7 @@ public class Lantern : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNearby = true;
-            if (interactText != null)
-            {
-                interactText.text = "Press E";
-            }
+            IsPlayerNearby = true;
         }
     }
 
@@ -57,46 +49,52 @@ public class Lantern : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNearby = false;
-            if (interactText != null)
-            {
-                interactText.text = "";
-            }
+            IsPlayerNearby = false;
         }
     }
 
     void ToggleShadow()
     {
-        if (isShadowOn)
+        if (IsShadowOn)
         {
-            animator.Play("Off");
-            light2D.enabled = false;
-            foreach (GameObject obj in LightObjectWithShadows)
-            {
-                foreach (Transform child in obj.transform)
-                {
-
-                    isShadowOn = false;
-                    child.gameObject.SetActive(false);
-                    AudioManager.Instance.PlaySFXOneShot(LanternOffSfx);
-
-                }
-            }
+            DeactivateShadow();
 
         }
-        else if (!isShadowOn)
+        else if (!IsShadowOn)
         {
-            animator.Play("On");
-            light2D.enabled = true;
-            foreach (GameObject obj in LightObjectWithShadows)
-            {
-                foreach (Transform child in obj.transform)
-                {
-                    isShadowOn = true;
-                    child.gameObject.SetActive(true);
-                    if (AudioManager.Instance) AudioManager.Instance.PlaySFXOneShot(LanternOnSfx);
+            ActivateShadow();
+        }
+    }
 
-                }
+    private void ActivateShadow()
+    {
+        _animator.Play("On");
+        Light2D.enabled = true;
+        foreach (GameObject obj in LightObjectWithShadows)
+        {
+            foreach (Transform child in obj.transform)
+            {
+                IsShadowOn = true;
+                child.gameObject.SetActive(true);
+                AudioManager.Instance.PlaySFXOneShot(LanternOnSfx);
+
+            }
+        }
+    }
+
+    private void DeactivateShadow()
+    {
+        _animator.Play("Off");
+        Light2D.enabled = false;
+        foreach (GameObject obj in LightObjectWithShadows)
+        {
+            foreach (Transform child in obj.transform)
+            {
+
+                IsShadowOn = false;
+                child.gameObject.SetActive(false);
+                AudioManager.Instance.PlaySFXOneShot(LanternOffSfx);
+
             }
         }
     }
