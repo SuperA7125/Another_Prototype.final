@@ -5,6 +5,14 @@ public class TutorialTextShow : MonoBehaviour
 {
     public TextMeshProUGUI Text;
 
+    public bool startVisible = false;
+
+    private void Start()
+    {
+        
+        Text.enabled = startVisible;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
