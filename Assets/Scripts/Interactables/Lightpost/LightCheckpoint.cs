@@ -20,7 +20,6 @@ public class LightCheckpoint : MonoBehaviour
             GameManager.Instance.SetLastCheckpoint(transform.position);
             _animator.Play("On");
             Light2D.enabled = true;
-            Debug.Log("Checkpoint made!");
         }
     }
 

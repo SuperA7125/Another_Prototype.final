@@ -47,6 +47,7 @@ public class BeaconLever : MonoBehaviour
             _animator.Play("LeverOn");
             beacon.ActivateBeacon();
             _isLeverBeenActivated = true;
+            GameManager.Instance.AddBeaconToCount();
         }
     }
 

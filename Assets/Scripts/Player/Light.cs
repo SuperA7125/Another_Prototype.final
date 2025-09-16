@@ -46,12 +46,14 @@ public class Light : MonoBehaviour
         _shadowScript = ShadowObj.GetComponentInChildren<Shadow>();
         _shadowRenderer = ShadowObj.GetComponent<SpriteRenderer>();
         _shadowScript.enabled = false;
+        Animator.speed = 1f;
+        ShadowAnimator.speed = 1f;
 
     }
 
     void Update()
     {
-
+        if (_isDead) return;
         if (!ShadowNeedsActivition)
         {
             StartCoroutine(WaitForShadowToAppear());
@@ -75,7 +77,7 @@ public class Light : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
+        if (_isDead) return;
         if (!IsAnimationRunning("Disappear"))
         {
             Move();
@@ -220,8 +222,12 @@ public class Light : MonoBehaviour
 
     IEnumerator Death()
     {
+        _isDead = true;
+        Animator.speed = 0.3f;
+        ShadowAnimator.speed = 0.3f;
         Animator.Play("Disappear");
         ShadowAnimator.Play("Disappear");
+
 
         AnimatorStateInfo currentStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitForSeconds(currentStateInfo.length - 0.1f);

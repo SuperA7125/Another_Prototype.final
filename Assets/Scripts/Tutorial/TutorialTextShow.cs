@@ -5,12 +5,12 @@ public class TutorialTextShow : MonoBehaviour
 {
     public TextMeshProUGUI Text;
 
-    public bool startVisible = false;
+    public bool StartVisible = false;
 
     private void Start()
     {
         
-        Text.enabled = startVisible;
+        Text.enabled = StartVisible;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

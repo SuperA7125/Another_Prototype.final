@@ -11,6 +11,7 @@ public class Shadow : MonoBehaviour
     //Animator and stat to control the animations
     public Animator Animator;
     public PlayerState State;
+    private bool _stopAnimations = false;
 
     //Sprite renderer to control the flip x
     private SpriteRenderer _spriteRenderer;
@@ -56,7 +57,8 @@ public class Shadow : MonoBehaviour
 
             _horizontal = Input.GetAxis("Horizontal");
 
-            Animator.Play(State.ToString());
+            if(!_stopAnimations)
+                Animator.Play(State.ToString());
         }
     }
 
@@ -137,14 +139,20 @@ public class Shadow : MonoBehaviour
     {
         ResetGravity();
 
+        _stopAnimations = true;
         State = PlayerState.Disappear;
         Animator.Play(State.ToString());
-        AnimatorStateInfo currentStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
-        yield return new WaitForSeconds(currentStateInfo.length - 0.1f);
 
+        AnimatorStateInfo currentStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
+        
+        yield return new WaitForSeconds(currentStateInfo.length - 0.1f);
+        
         transform.position = LightObj.transform.position + new Vector3(-0.2f, 0, 0);
+
+        _stopAnimations = false;
         _lightScript.enabled = true;
         this.enabled = false;
+        
     }
 
     

@@ -6,12 +6,12 @@ public class GameManager : MonoBehaviour
 
     private Vector2 _lastCheckpointPos;
 
+    [SerializeField] private int _activeBeaconsCount = 0;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -35,5 +35,16 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = new Vector3(_lastCheckpointPos.x, _lastCheckpointPos.y + 0.5f,0);
         }
+    }
+
+    public void AddBeaconToCount() 
+    { 
+        _activeBeaconsCount++;
+
+        if (_activeBeaconsCount == 3)
+        {
+            ScenesManager.Instance.DieAndLoadNextScene();
+        }
+    
     }
 }

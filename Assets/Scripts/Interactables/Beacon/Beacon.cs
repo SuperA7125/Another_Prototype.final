@@ -24,6 +24,7 @@ public class Beacon : MonoBehaviour
     private Animator _animator;
     void Start()
     {
+        CameraController = FindAnyObjectByType<CameraController>();
         _animator = GetComponent<Animator>();
     }
 

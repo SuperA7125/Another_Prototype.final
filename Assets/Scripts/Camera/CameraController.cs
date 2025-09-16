@@ -18,6 +18,10 @@ public class CameraController : MonoBehaviour
 
     private Transform _overrideTarget = null;
 
+    private void Awake()
+    {
+        CameraObj = GetComponent<Camera>();
+    }
     void FixedUpdate()
     {
         SetCameraFollow();
