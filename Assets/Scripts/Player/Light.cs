@@ -34,6 +34,8 @@ public class Light : MonoBehaviour
 
     //Raycast settings
     public LayerMask LightGround;
+    public Vector2 RayOffset;
+    public float RayOffsetX;
     public float RayLength;
     private float _horizontal;
 
@@ -151,7 +153,9 @@ public class Light : MonoBehaviour
     
     void GroundCheck()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, RayLength, LightGround);
+        RayOffsetX = _spriteRenderer.flipX ? 0.2f : -0.2f;
+        RayOffset = new Vector2(transform.position.x - RayOffsetX , transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(RayOffset, Vector2.down, RayLength, LightGround);
 
         if (hit.collider != null)
         {
