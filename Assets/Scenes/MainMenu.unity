@@ -892,7 +892,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1799203880}
         m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: ChangeScence
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3929,6 +3929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: Tutorial
   LightPlayer: {fileID: 0}
+  ShadowPlayer: {fileID: 0}
+  TutorialLights: []
 --- !u!4 &1799203881
 Transform:
   m_ObjectHideFlags: 0

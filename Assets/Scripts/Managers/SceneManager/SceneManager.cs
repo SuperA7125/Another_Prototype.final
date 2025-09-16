@@ -39,6 +39,10 @@ public class ScenesManager : MonoBehaviour
         }
     } //Set a collidor on scene that will play death animation and move scences
     
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(SceneName);
+    }
     public void DieAndLoadNextScene()
     {
         StartCoroutine(DieAndLoadSceneAfterBeacon());
