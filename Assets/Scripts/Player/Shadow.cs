@@ -23,8 +23,7 @@ public class Shadow : MonoBehaviour
     public Rigidbody2D ShadowRb;
 
     //Raycast setting
-    public Vector2 RayOffset;
-    public float RayOffsetX;
+    public Vector2 BoxSize = new Vector2(0.1f, 0.2f);
     public LayerMask ShadowGround;
     public float RayLength;
 
@@ -110,9 +109,7 @@ public class Shadow : MonoBehaviour
 
     void GroundCheck()
     {
-        RayOffsetX  = _spriteRenderer.flipX ? 0.2f : -0.2f;
-        RayOffset = new Vector2(transform.position.x - RayOffsetX, transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(RayOffset, Vector2.down, RayLength, ShadowGround);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, BoxSize, 0f, Vector2.down, RayLength, ShadowGround);
         if (hit.collider != null)
         {
             _hasJumped = false;

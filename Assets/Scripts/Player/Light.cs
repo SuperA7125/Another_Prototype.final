@@ -34,9 +34,9 @@ public class Light : MonoBehaviour
 
     //Raycast settings
     public LayerMask LightGround;
-    public Vector2 RayOffset;
-    public float RayOffsetX;
+    public Vector2 BoxSize = new Vector2(0.1f, 0.2f);
     public float RayLength;
+
     private float _horizontal;
 
     
@@ -153,9 +153,9 @@ public class Light : MonoBehaviour
     
     void GroundCheck()
     {
-        RayOffsetX = _spriteRenderer.flipX ? 0.2f : -0.2f;
-        RayOffset = new Vector2(transform.position.x - RayOffsetX , transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(RayOffset, Vector2.down, RayLength, LightGround);
+        
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position,BoxSize,0f, Vector2.down, RayLength, LightGround);
+
 
         if (hit.collider != null)
         {
@@ -247,5 +247,13 @@ public class Light : MonoBehaviour
         AnimatorStateInfo currentStateInfo = ShadowAnimator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitForSeconds(currentStateInfo.length - 0.1f);
         ShadowNeedsActivition = true;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector2 origin = new Vector2(transform.position.x , transform.position.y);
+        Gizmos.DrawWireCube(origin + Vector2.down * RayLength, BoxSize);
     }
 }

@@ -62,9 +62,8 @@ MonoBehaviour:
   LightGround:
     serializedVersion: 2
     m_Bits: 256
-  RayOffset: {x: 0, y: 0}
-  RayOffsetX: 0
-  RayLength: 0.7
+  BoxSize: {x: 0.35, y: 0.2}
+  RayLength: 0.4
 --- !u!212 &5834509503618730613
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -303,10 +302,11 @@ MonoBehaviour:
   State: 0
   LightObj: {fileID: 103042364053117000}
   ShadowRb: {fileID: 342876139677818871}
+  BoxSize: {x: 0.35, y: 0.2}
   ShadowGround:
     serializedVersion: 2
     m_Bits: 512
-  RayLength: 0.7
+  RayLength: 0.4
 --- !u!212 &148488718868387348
 SpriteRenderer:
   m_ObjectHideFlags: 0
