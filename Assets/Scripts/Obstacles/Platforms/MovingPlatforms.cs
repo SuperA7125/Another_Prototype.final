@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatforms : MonoBehaviour
@@ -9,6 +11,9 @@ public class MovingPlatforms : MonoBehaviour
     public float Speed = 2f;
     public float Tolerance = 0.01f;
 
+    [SerializeField]List<string> _possibleTags;
+
+    Dictionary<Transform,Transform> CharacterParentPair = new();
     private void Start()
     {
         _startingPos = transform.position;
@@ -19,6 +24,28 @@ public class MovingPlatforms : MonoBehaviour
         TogglePlatforms();
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        foreach (string tag in _possibleTags)
+        {
+            if (other.collider.CompareTag(tag))
+            {
+                CharacterParentPair[other.collider.transform] = other.collider.transform.parent;
+                other.collider.transform.SetParent(transform, true);
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        foreach (string tag in _possibleTags)
+        {
+            if (other.collider.CompareTag(tag))
+            {
+                other.collider.transform.SetParent(CharacterParentPair[other.collider.transform], true);
+            }
+        }
+    }
     void TogglePlatforms()
     {
         Vector3 target = _movingToEnd ? EndPos : _startingPos;

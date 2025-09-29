@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
        _targetPos = LightPlayer.transform.position + new Vector3(0, YOffset, 0); 
        _targetPos.z = CameraObj.transform.position.z;
 
-       CameraObj.transform.position = Vector3.MoveTowards(CameraObj.transform.position, _targetPos, FollowSpeed * Time.deltaTime);
+       CameraObj.transform.position = Vector3.MoveTowards(CameraObj.transform.position, _targetPos,  FollowSpeed * Time.deltaTime);
  
     }
 
@@ -92,4 +92,6 @@ public class CameraController : MonoBehaviour
             IsFollowingLight = true;
         }
     }
+
+    
 }
