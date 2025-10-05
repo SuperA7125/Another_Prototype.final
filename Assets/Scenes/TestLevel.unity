@@ -33296,9 +33296,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 32
-  m_RefResolutionX: 320
-  m_RefResolutionY: 180
+  m_AssetsPPU: 64
+  m_RefResolutionX: 640
+  m_RefResolutionY: 320
   m_CropFrame: 0
   m_GridSnapping: 2
   m_FilterMode: 0
@@ -56581,7 +56581,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 639dc6996ccf9bf4d9f2b8c9b2500aa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -56635,7 +56635,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603001095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7eb0486b8b641764d921f58d1dbf4d3a, type: 3}
   m_Name: 
@@ -56830,6 +56830,14 @@ PrefabInstance:
     - target: {fileID: 4197391765555150650, guid: 66321da2d0cb0c74c97586049ca43877, type: 3}
       propertyPath: m_Name
       value: Glow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735883470252918524, guid: 66321da2d0cb0c74c97586049ca43877, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735883470252918524, guid: 66321da2d0cb0c74c97586049ca43877, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5635685984627955271, guid: 66321da2d0cb0c74c97586049ca43877, type: 3}
       propertyPath: m_SpotAngle
