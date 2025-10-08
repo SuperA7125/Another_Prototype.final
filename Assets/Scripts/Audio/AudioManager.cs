@@ -8,6 +8,10 @@ public class AudioManager : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource SfxSource;
 
+    //Volume Setting 
+    public float MasterVolume = 1.0f;
+    public float MusicVolume = 1.0f;
+    public float SfxVolume = 1.0f;
     //Clip of the Background music
     public AudioClip BackgroundMusic;
     void Awake()
