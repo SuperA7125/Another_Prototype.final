@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,12 +10,16 @@ public class AudioManager : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource SfxSource;
 
-    //Volume Setting 
-    public float MasterVolume = 1.0f;
-    public float MusicVolume = 1.0f;
-    public float SfxVolume = 1.0f;
+    //Slider
+    [SerializeField] private Slider _masterSlider;
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField] private Slider _sfxSlider;
+
     //Clip of the Background music
     public AudioClip BackgroundMusic;
+
+    //Audio Panel
+    [SerializeField] private GameObject _panel;
     void Awake()
     {
         Instance = this;
@@ -21,13 +27,45 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        PlayMusic(BackgroundMusic,0.3f);
+        _panel.SetActive(false);
+        _masterSlider.value = 0.5f;
+        _musicSlider.value = 0.5f;
+        _sfxSlider.value = 0.5f;
+        PlayMusic(BackgroundMusic);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (_panel.gameObject.activeSelf)
+            {
+                _panel.SetActive(false);
+            }
+            else
+            {
+                _panel.SetActive(true);
+            }
+        }
+    }
+    public void ChangeMasterVolume()
+    {
+        MusicSource.volume = _musicSlider.value * _masterSlider.value;
+        SfxSource.volume = _sfxSlider.value * _masterSlider.value;
+    }
+
+    public void ChangeMusicVolume()
+    {
+        MusicSource.volume = _musicSlider.value * _masterSlider.value;
+    }
+
+    public void ChangeSfxVolume()
+    {
+        SfxSource.volume = _sfxSlider.value * _masterSlider.value;
+    }
     public void PlayMusic(AudioClip clip, float volume = 1.0f, float pitch = 1.0f)
     {
         MusicSource.loop = true;
-        MusicSource.volume = volume;
         MusicSource.clip = clip;
         MusicSource.Play();
     }
@@ -35,7 +73,6 @@ public class AudioManager : MonoBehaviour
     public void PlaySFXOneShot(AudioClip clip, float volume = 1.0f)
     {
         SfxSource.clip = clip;
-        SfxSource.volume = volume;
 
         SfxSource.PlayOneShot(clip, volume);
     }
@@ -50,7 +87,7 @@ public class AudioManager : MonoBehaviour
 
         AudioSource sfxAudioSource = sfxObj.AddComponent<AudioSource>();
         sfxAudioSource.clip = clip;
-        sfxAudioSource.volume = volume;
+        sfxAudioSource.volume = SfxSource.volume;
         sfxAudioSource.pitch = randomPitch;
 
         randomPitch = Random.Range(1.0f, 3.0f);
