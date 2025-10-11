@@ -38,16 +38,35 @@ public class AudioManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (_panel.gameObject.activeSelf)
-            {
-                _panel.SetActive(false);
-                Time.timeScale = 1f;
-            }
-            else
-            {
-                _panel.SetActive(true);
-                Time.timeScale = 0f;
-            }
+            ToggleAudioPanel();
+        }
+    }
+
+    private void ToggleAudioPanel()
+    {
+        if (_panel.gameObject.activeSelf)
+        {
+            _panel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            _panel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void ToggleAudioPanelInMainMenu()
+    {
+        if (_panel.gameObject.activeSelf)
+        {
+            _panel.SetActive(false);
+            
+        }
+        else
+        {
+            _panel.SetActive(true);
+            
         }
     }
     public void ChangeMasterVolume()
