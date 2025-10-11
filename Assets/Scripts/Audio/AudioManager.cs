@@ -41,10 +41,12 @@ public class AudioManager : MonoBehaviour
             if (_panel.gameObject.activeSelf)
             {
                 _panel.SetActive(false);
+                Time.timeScale = 1f;
             }
             else
             {
                 _panel.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
     }
