@@ -39,7 +39,7 @@ public class Light : MonoBehaviour
 
     private float _horizontal;
 
-    
+    public float LastFacingDir = 0;
 
     void Start()
     {
@@ -55,6 +55,7 @@ public class Light : MonoBehaviour
 
     void Update()
     {
+        LastFacingDir = _horizontal;
         if (_isDead) return;
         if (!ShadowNeedsActivition)
         {
@@ -86,6 +87,10 @@ public class Light : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        LastFacingDir = 0;
+    }
     private void Move()
     {
         if (_horizontal != 0)
