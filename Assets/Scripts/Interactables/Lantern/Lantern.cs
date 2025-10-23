@@ -11,7 +11,7 @@ public class Lantern : MonoBehaviour
 
     public bool IsShadowOn = false; //Checks if the stats of the shadows 
     public bool IsPlayerNearby = false; //Checks if the player is nearby
-
+    public bool IsActive = false;
     //Refrence to check if the player is playing as _lightPlayer
     public Light LightPlayer;
 
@@ -26,6 +26,12 @@ public class Lantern : MonoBehaviour
     {
         LightPlayer = FindAnyObjectByType<Light>();
         _animator = GetComponent<Animator>();
+        if (IsActive)
+        {
+            _animator.Play("On");
+            Light2D.enabled = true;
+            ToggleShadow();
+        }
     }
 
 

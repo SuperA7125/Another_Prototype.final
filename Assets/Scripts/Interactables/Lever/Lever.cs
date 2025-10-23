@@ -27,7 +27,7 @@ public class Lever : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && IsPlayerNearby && ShadowPlayer.enabled)
         {
-            ToggleLight();
+            ToggleLightObjects();
 
             AudioManager.Instance.PlaySFXOneShot(LeverSfx);
         }
@@ -79,5 +79,15 @@ public class Lever : MonoBehaviour
             obj.SetActive(false);
         }
         IsLeverOn = false;
+    }
+
+    private void ToggleLightObjects()
+    {
+        IsLeverOn = !IsLeverOn;
+        _animator.Play(IsLeverOn ? "LeverOn" : "LeverOff");
+        foreach (GameObject obj in LightObjectToToggle)
+        {
+            obj.SetActive(!obj.activeSelf);
+        }
     }
 }

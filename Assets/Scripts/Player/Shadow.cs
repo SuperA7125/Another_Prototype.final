@@ -44,8 +44,6 @@ public class Shadow : MonoBehaviour
     private void OnEnable()
     {
         ResetGravity();
-        
-        StartCoroutine(DashingAction(_lightScript.LastFacingDir));
     }
 
     void Update()

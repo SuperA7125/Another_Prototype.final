@@ -8,12 +8,14 @@ public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance;
 
+    public float WaitTime = 2f;
     public string SceneName;
 
     public Light LightPlayer; //Refrence to the _lightPlayer player to play the death animation on transition
 
     public Shadow ShadowPlayer; 
 
+    private CameraController _cameraController;
     public List<Light2D> TutorialLights = new List<Light2D>();
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class ScenesManager : MonoBehaviour
 
         LightPlayer = FindAnyObjectByType<Light>();
         ShadowPlayer = FindAnyObjectByType<Shadow>();
+        _cameraController = FindAnyObjectByType<CameraController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,10 +50,20 @@ public class ScenesManager : MonoBehaviour
     {
         StartCoroutine(DieAndLoadSceneAfterBeacon());
     }
+    public void DieShakeAndLoadScence()
+    {
+        StartCoroutine(DieAndLoadScene());
+    }
+    public void StartLoadingNextScence()
+    {
+        StartCoroutine(WaitAndLoadScene());
+    }
     private IEnumerator DieAndLoadScene()
     {
+
         LightPlayer.StartDeath();
-        
+
+        _cameraController.Shake();
         foreach (Light2D light in TutorialLights)
         {
             light.intensity -= 0.01f;
@@ -61,7 +74,7 @@ public class ScenesManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(SceneName);
+        //SceneManager.LoadScene(SceneName);
         yield return null;
     }
 
@@ -87,5 +100,12 @@ public class ScenesManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneName);
         yield return null;
+    }
+
+    private IEnumerator WaitAndLoadScene()
+    {
+        yield return new WaitForSeconds(WaitTime);
+
+        SceneManager.LoadScene(SceneName);
     }
 }
