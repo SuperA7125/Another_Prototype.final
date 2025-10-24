@@ -1,4 +1,4 @@
-
+using System.Collections;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -16,6 +16,11 @@ public class CameraController : MonoBehaviour
     public float FollowSpeed = 5f;
 
     private Transform _overrideTarget = null;
+
+    public AnimationCurve AnimationCurve;
+
+    public float Duration = 3f;
+
 
     private void Awake()
     {
@@ -93,5 +98,23 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    
+    public void Shake()
+    {
+        StartCoroutine(ScreenShake());
+    }
+    private IEnumerator ScreenShake()
+    {
+        Vector3 startPos = CameraObj.transform.position;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < Duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float strength = AnimationCurve.Evaluate(elapsedTime / Duration);
+            CameraObj.transform.position = startPos + Random.insideUnitSphere * strength;
+            yield return null;
+        }
+
+        CameraObj.transform.position = startPos;
+    }
 }

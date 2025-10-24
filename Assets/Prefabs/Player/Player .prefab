@@ -297,6 +297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  DashSpeed: 20
+  DashDistance: 2
   JumpForce: 5
   Animator: {fileID: 3554213499845685282}
   State: 0

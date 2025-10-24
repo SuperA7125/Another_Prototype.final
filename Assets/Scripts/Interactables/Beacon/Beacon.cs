@@ -22,6 +22,8 @@ public class Beacon : MonoBehaviour
     private bool _isBeaconActive = false;
 
     private Animator _animator;
+
+    public Animator _animator2;
     void Start()
     {
         CameraController = FindAnyObjectByType<CameraController>();
@@ -33,7 +35,15 @@ public class Beacon : MonoBehaviour
 
         if (!_isBeaconActive)
         {
-            StartCoroutine(ActivateBeaconSequnce());
+            //_isBeaconActive = true;
+            //_animator.Play("On");
+            //Light2D.enabled = true;
+            if (_animator2 != null)
+            {
+                _animator2.Play("BeaconBigLight");
+            }
+            ScenesManager.Instance.StartLoadingNextScence();
+            //StartCoroutine(ActivateBeaconSequnce());
         }
     }
     IEnumerator ActivateBeaconSequnce()

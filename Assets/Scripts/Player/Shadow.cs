@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class Shadow : MonoBehaviour
 {
     //Basic movement stats
     public float MoveSpeed = 5.0f;
+    [SerializeField] private float DashSpeed = 20.0f;
+    [SerializeField] private float DashDistance = 5f;
     public float JumpForce = 1f;   
     private bool _hasJumped = false;
 
@@ -70,6 +73,28 @@ public class Shadow : MonoBehaviour
         Move();
     }
 
+    private IEnumerator DashingAction(float XDirection = 0, float YDirection = 0)
+    {
+        // Directions can be 1 or -1
+        if (XDirection == 0 && YDirection == 0)
+            yield break;
+
+        Vector2 dashDir = new Vector2(XDirection, YDirection).normalized;
+        Vector3 targetPos = transform.position + (Vector3)(dashDir * DashDistance);
+
+        while (Vector3.Distance(transform.position, targetPos) > 0.05f)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                targetPos,
+                DashSpeed * Time.deltaTime
+            );
+
+            yield return null; 
+        }
+
+        transform.position = targetPos; 
+    }
     private void Move()
     {
         if (_horizontal != 0)
@@ -162,5 +187,6 @@ public class Shadow : MonoBehaviour
         ShadowRb.gravityScale = 1;
         ShadowRb.linearVelocity = Vector2.zero;
         ShadowRb.angularVelocity = 0;
+        _horizontal = 0;
     } //Reset garavity so it wont accmulat while not in shadow mode
 }

@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour
     private Vector2 _lastCheckpointPos;
 
     [SerializeField] private int _activeBeaconsCount = 0;
+    public int ActiveBeaconsCount => _activeBeaconsCount;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
