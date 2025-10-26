@@ -15,7 +15,7 @@ public class MovingPlatforms : MonoBehaviour
 
     [SerializeField]List<string> _possibleTags;
 
-    Dictionary<Transform,Transform> CharacterParentPair = new();
+    static Dictionary<Transform,Transform> CharacterParentPair = new();
     private void Start()
     {
         Camera = FindAnyObjectByType<Camera>();
@@ -32,11 +32,12 @@ public class MovingPlatforms : MonoBehaviour
         
         foreach (string tag in _possibleTags)
         {
-            if (other.collider.CompareTag(tag))
+            if (other.collider.CompareTag(tag) && !CharacterParentPair.ContainsKey(other.collider.transform))
             {
                 Camera?.transform.SetParent(transform, true);
                 CharacterParentPair[other.collider.transform] = other.collider.transform.parent;
                 other.collider.transform.SetParent(transform, true);
+                Debug.Log("Start collision");
             }
         }
     }
@@ -46,10 +47,12 @@ public class MovingPlatforms : MonoBehaviour
         
         foreach (string tag in _possibleTags)
         {
-            if (other.collider.CompareTag(tag))
+            if (other.collider.CompareTag(tag) && CharacterParentPair.ContainsKey(other.collider.transform))
             {
                 Camera?.transform.SetParent(null, true);
                 other.collider.transform.SetParent(CharacterParentPair[other.collider.transform], true);
+                CharacterParentPair.Remove(other.collider.transform);
+                Debug.Log("Leave collision");
             }
         }
     }

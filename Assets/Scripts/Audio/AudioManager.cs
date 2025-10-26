@@ -20,17 +20,27 @@ public class AudioManager : MonoBehaviour
 
     //Audio Panel
     [SerializeField] private GameObject _panel;
-    void Awake()
+    
+    private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
     {
         _panel.SetActive(false);
-        _masterSlider.value = 0.5f;
-        _musicSlider.value = 0.5f;
-        _sfxSlider.value = 0.5f;
+        if(_masterSlider.value == 0) { _masterSlider.value = 0.5f; }
+        if(_musicSlider.value == 0) { _musicSlider.value = 0.5f; }
+        if(_sfxSlider.value == 0) { _sfxSlider.value = 0.5f; }
+        
         PlayMusic(BackgroundMusic);
     }
 
@@ -103,7 +113,7 @@ public class AudioManager : MonoBehaviour
         if (clip == null) return;
 
         if (randomPitch == 0.0f) return;
-
+        if (!Application.isPlaying) return;
         GameObject sfxObj = new GameObject("SFX");
 
         AudioSource sfxAudioSource = sfxObj.AddComponent<AudioSource>();

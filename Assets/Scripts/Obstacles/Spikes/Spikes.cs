@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class Spikes : MonoBehaviour
 {
     private Shadow _shadowPlayer;
@@ -16,6 +16,7 @@ public class Spikes : MonoBehaviour
             {
                 Debug.Log("_lightPlayer Found");
                 _lightPlayer.StartDeathAndRespawn();
+
             }
         }
         else if (other.CompareTag("PlayerShadow"))
@@ -26,5 +27,11 @@ public class Spikes : MonoBehaviour
                 _shadowPlayer.ToggleMode();
             }
         }
+    }
+
+    private IEnumerator ITurnCollionsOffForSecaconds()
+    {
+
+        return null;
     }
 }
