@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     //Audio Panel
     [SerializeField] private GameObject _panel;
     
+    public bool StopFootSteps = false;
     private void Awake()
     {
         if (Instance == null)
@@ -111,7 +112,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySFXCustom(AudioClip clip, float volume = 1.0f, float randomPitch = 1.0f)
     {
         if (clip == null) return;
-
+        if (StopFootSteps) return;
         if (randomPitch == 0.0f) return;
         if (!Application.isPlaying) return;
         GameObject sfxObj = new GameObject("SFX");

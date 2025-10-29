@@ -1,13 +1,13 @@
-using UnityEngine;
-using UnityEditor.Timeline;
-using UnityEngine.Playables;
 using System.Collections;
-
-public class PromptStoper : MonoBehaviour
+using UnityEngine;
+using UnityEngine.Playables;
+public class CutscenceMove : MonoBehaviour
 {
-    [SerializeField] private PlayableDirector _director;
+   [SerializeField] PlayableDirector _diractor1;
+   [SerializeField] GameObject _diractor2;
 
-    [SerializeField] private Beacon _beacon;
+
+
     private void OnEnable()
     {
         StartCoroutine(WaitForE());
@@ -20,8 +20,11 @@ public class PromptStoper : MonoBehaviour
         {
             yield return null;
             isE = Input.GetKey(KeyCode.E);
-            
+
         }
-        _beacon.ActivateBeacon();
+
+        _diractor1.Stop();
+        _diractor2.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

@@ -42,7 +42,9 @@ public class Beacon : MonoBehaviour
             {
                 _animator2.Play("BeaconBigLight");
             }
+            GameManager.Instance.AddBeaconToCount();
             ScenesManager.Instance.StartLoadingNextScence();
+
             //StartCoroutine(ActivateBeaconSequnce());
         }
     }

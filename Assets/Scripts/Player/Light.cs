@@ -43,6 +43,7 @@ public class Light : MonoBehaviour
 
     void Start()
     {
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
         _shadowScript = ShadowObj.GetComponentInChildren<Shadow>();
@@ -50,7 +51,7 @@ public class Light : MonoBehaviour
         _shadowScript.enabled = false;
         Animator.speed = 1f;
         ShadowAnimator.speed = 1f;
-
+        ActivateSteps();
     }
 
     void Update()
@@ -261,4 +262,12 @@ public class Light : MonoBehaviour
         Vector2 origin = new Vector2(transform.position.x , transform.position.y);
         Gizmos.DrawWireCube(origin + Vector2.down * RayLength, BoxSize);
     }
+
+
+    void ActivateSteps()
+    {
+        AudioManager.Instance.StopFootSteps = true;
+    }
+
 }
+
