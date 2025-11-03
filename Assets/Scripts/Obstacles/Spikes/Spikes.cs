@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+
 public class Spikes : MonoBehaviour
 {
     private Shadow _shadowPlayer;
@@ -29,9 +29,4 @@ public class Spikes : MonoBehaviour
         }
     }
 
-    private IEnumerator ITurnCollionsOffForSecaconds()
-    {
-
-        return null;
-    }
 }
