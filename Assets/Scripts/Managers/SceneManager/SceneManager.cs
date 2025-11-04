@@ -46,6 +46,11 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneName);
     }
+
+    public void LoadSceneFromString(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
     public void DieAndLoadNextScene()
     {
         StartCoroutine(DieAndLoadSceneAfterBeacon());

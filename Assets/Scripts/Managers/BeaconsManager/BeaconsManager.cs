@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class BeaconsManager : MonoBehaviour
 {
 
@@ -31,6 +31,7 @@ public class BeaconsManager : MonoBehaviour
                 return;
             case 1:
                 _animator1.Play("Beacon Light Up");
+                StartCoroutine(WaitAndGoToScene(2, "TestLevel"));
                 return;
             case 2:
                 _animator1.Play("BeaconActiveAlready");
@@ -43,5 +44,10 @@ public class BeaconsManager : MonoBehaviour
                 return;
         }
     }
-
+    
+    IEnumerator WaitAndGoToScene(int x, string sceneName)
+    {
+        yield return new WaitForSeconds(x);
+        ScenesManager.Instance.LoadSceneFromString(sceneName);
+    }
 }
