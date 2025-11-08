@@ -84276,7 +84276,7 @@ MonoBehaviour:
   _masterSlider: {fileID: 1978622711}
   _musicSlider: {fileID: 1972954730}
   _sfxSlider: {fileID: 71655855}
-  BackgroundMusic: {fileID: 8300000, guid: b28bf9533c4da1b44b289ddd54478cef, type: 3}
+  BackgroundMusic: {fileID: 8300000, guid: ea7092e990e64674ea46c96705f29aef, type: 3}
   _panel: {fileID: 1402428550}
   StopFootSteps: 0
 --- !u!1 &1481099995

@@ -12257,6 +12257,8 @@ MonoBehaviour:
   EndPos: {x: 3, y: 1, z: 0}
   Speed: 1
   Tolerance: 0.01
+  Camera: {fileID: 0}
+  _possibleTags: []
 --- !u!1 &1318507985
 GameObject:
   m_ObjectHideFlags: 0
@@ -97038,7 +97040,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicSource: {fileID: 1999908555}
   SfxSource: {fileID: 1999908554}
-  BackgroundMusic: {fileID: 8300000, guid: b28bf9533c4da1b44b289ddd54478cef, type: 3}
+  _masterSlider: {fileID: 0}
+  _musicSlider: {fileID: 0}
+  _sfxSlider: {fileID: 0}
+  BackgroundMusic: {fileID: 8300000, guid: ea7092e990e64674ea46c96705f29aef, type: 3}
+  _panel: {fileID: 0}
 --- !u!4 &1999908557
 Transform:
   m_ObjectHideFlags: 0
