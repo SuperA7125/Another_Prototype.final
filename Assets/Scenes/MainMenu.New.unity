@@ -3113,12 +3113,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicSource: {fileID: 998649781}
   SfxSource: {fileID: 998649780}
+<<<<<<< HEAD
   _masterSlider: {fileID: 1657247777}
   _musicSlider: {fileID: 1465179554}
   _sfxSlider: {fileID: 2113325424}
   BackgroundMusic: {fileID: 8300000, guid: b28bf9533c4da1b44b289ddd54478cef, type: 3}
   _panel: {fileID: 845247883}
   StopFootSteps: 0
+=======
+  _masterSlider: {fileID: 176261004}
+  _musicSlider: {fileID: 1554538023}
+  _sfxSlider: {fileID: 1999542171}
+  BackgroundMusic: {fileID: 8300000, guid: f04627f8b2cdc084cbfe341a31ca8323, type: 3}
+  _panel: {fileID: 2088426505}
+>>>>>>> DeniLevelDesign
 --- !u!1 &1019296640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3652,9 +3660,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.0009259259
+    width: 0.9645834
+    height: 0.47037035
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
