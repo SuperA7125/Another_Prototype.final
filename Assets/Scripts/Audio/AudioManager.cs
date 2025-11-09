@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void ToggleAudioPanel()
+    public void ToggleAudioPanel()
     {
         if (_panel.gameObject.activeSelf)
         {
